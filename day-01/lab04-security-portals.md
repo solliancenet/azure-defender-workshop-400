@@ -43,7 +43,7 @@ Customers have immense flexibility when choosing what resources they would like 
 
 ### Task 6: Endpoint Management (Intune)
 
-1. Open the [Portal](https://endpoint.microsoft.com/?ref=AdminCenter), review it.
+1. Open the [Portal](https://endpoint.microsoft.com), review it.
 
     ![Endpoint Management Portal](./media/portal_endpoint_management.png "Endpoint Management Portal")
 
@@ -58,6 +58,8 @@ Customers have immense flexibility when choosing what resources they would like 
 ### Task 8: Microsoft Defender for Identity
 
 1. Open the [Portal](https://portal.atp.azure.com/), review it.
+
+    > **NOTE** You may need to create the instance first before you can browse the portal
 
     ![Microsoft Defender for Identity Portal](./media/portal_defender_identity.png "Microsoft Defender for Identity Portal")
 

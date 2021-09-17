@@ -7,16 +7,16 @@
 1. Log in to the **wssecuritySUFFIX-paw-1** virtual machine
 2. Open the Azure Portal to your lab environment
 3. Navigate to your lab resource group
-4. Open the **wssecuritySUFFIX** container registry
+4. Select the **wssecuritySUFFIX** container registry
 5. Under **Services**, select **Repositories**, notice there are no images
 6. Under **Settings**, select **Access keys**
 7. Copy the username and password for later use
 
     ![Copy username and password.](./media/container_registry_keys.png "Copy username and password")
 
-8. Browse to the **wssecuritySUFFIX-linux-1** virutal machine
-9. Under **Settings**, select **Connect**
-10. Select **Request access**
+8. Browse to the **wssecuritySUFFIX-linux-1** virtual machine
+9. Under **Settings**, select **Connect->SSH**
+10. Select **MyIP**, then select **Request access**
 11. Open a powerShell window, log in to the **wssecuritySUFFIX-linux-1** virtual machine by running the following:
 
     ```bash
@@ -30,17 +30,17 @@
     ```bash
     sudo apt-get update
 
-    sudo apt-get install pass gnupg2
+    sudo apt-get install pass gnupg2 -y
 
-    sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+    sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release -y
 
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
     echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     
-    sudo apt-get install docker-compose
+    sudo apt-get install docker-compose -y
 
-    sudo apt-get install make
+    sudo apt-get install make -y
 
     sudo docker pull docker.io/azurebellhop/engine:v0.4
 
@@ -76,6 +76,7 @@
     ```
 
 15. Switch to the Azure Portal, browse to the **wssecuritySUFFIX** Azure Container Registry
+
 16. Under **Services**, select **Repositories**, you should see the new images displayed
 
     ![Three containers are displayed.](./media/container_registry_containers.png "Three containers are displayed")
@@ -85,7 +86,9 @@
     ![Ensure security is enabled.](./media/container_registry_security_on.png "Ensure security is enabled")
 
 18. Browse to **Security Center**
+
 19. Under **Cloud Security**, select **Azure Defender**
+
 20. Select **Container Image scanning**, you should see one or more recommendations displayed. Wait for their to be 4 images to be scanned.  This can take a few minutes.
 
     ![Containers with issues.](./media/container_registry_security_recommendations.png "Containers with issues")
@@ -201,9 +204,9 @@
 1. Switch to the Azure Portal
 2. Select **Security Center**
 3. Under **Cloud Security**, select **Regulatory compliance**
-4. Select **Manage compliance policies>**
+4. Select **Manage compliance policies**
 5. Select your lab subscription
-6. Select **Add more standards**
+6. Select Under **Industry and regulation standards**, select **Add more standards**
 7. For the **NIST SP 800-53 R4**, select **Add**
 8. Select **Review + create**
 9. Select **Create**

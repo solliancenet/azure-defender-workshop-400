@@ -31,15 +31,15 @@ Synopsis: Azure Security Center provides several advanced security and threat de
 
     ![The log analytics workspace is highlighted.](./media/LogAnalyticsWorkspace.png "Select the log analytics workspace")
 
-2. In the blade, select **Agents Management**.
+2. In the blade, under **Settings**, select **Agents Management**.
 
 3. Record the `Workspace ID` and the `Primary key` values.
 
    ![Agents management blade link is highlighted along with the id and key for the workspace](./media/LogAnalyticsWorkspace_Settings.png "Copy the workspace id and key")
 
-4. Switch to the Remote Desktop Connection to the **paw-1**. If not logged in, login to the **wssecuritySUFFIX-paw-1** virtual machine
+4. Switch to the Remote Desktop Connection to the **wssecurity-SUFFIX-paw-1**. If not logged in, login to the **wssecuritySUFFIX-paw-1** virtual machine using the `wsuser` username and the lab password.
 
-5. Open the **Putty** tool
+5. Open the **Putty** tool (you can also use Powershell to connect over SSH)
 
     > **Note** If putty is not installed, download it from [here](https://the.earth.li/~sgtatham/putty/0.75/w64/).
 
@@ -68,7 +68,7 @@ Synopsis: Azure Security Center provides several advanced security and threat de
 
    ![The displayed of connected linux computers for the workspace.](./media/loganalytics-linux-computers.png "Review the linux computers connected to workspace")
 
-   > **Note** In most cases, Azure will assign resources automatically to the log analytics workspace in your resource group.
+   > **Note** In most cases, Azure Security Center will assign resources automatically to a default or pre-configured log analytics workspace in your resource group.
 
 ### Task 3: Enable change tracking and update management
 
@@ -88,7 +88,7 @@ Synopsis: Azure Security Center provides several advanced security and threat de
     > **NOTE** If you do not pre-link an automation account, this blade dialog will not deploy a link reliability.  You should do this before you create log analytic services. See [Region Mappings](https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings) for more information.
 
 8. Select all the virtual machines, then select **Enable**.
-9. Navigate back to the **Virtual Machines** blade, again highlight the **paw-1** and **linux-1** virtual machines that were deployed.
+9. Navigate back to the **Virtual Machines** blade, again highlight the **wssecurity-SUFFIX-paw-1** and **wssecurity-SUFFIX-linux-1** virtual machines that were deployed.
 10. In the top menu, select **Services**, then select **Inventory**.
 11. Select the **CUSTOM** radio button.
 12. Select **change**, select the **Log Analytics Workspace** that was deployed with the lab ARM template.
@@ -105,6 +105,9 @@ Synopsis: Azure Security Center provides several advanced security and threat de
     ![The solutions configured for the workspace are displayed.](./media/loganalytics-solutions.png "Select the ChangeTracking solution item")
 
 22. Under **Workspace Data Sources** section, select **Solution Targeting (Preview)**.
+
+    ![Remove any solution targeting.](./media/solution-targeting-disable.png "Remove any solution targeting")
+
 23. Remove any scopes that are displayed via the ellipses to the right of the items.
 24. Repeat the steps to remove the solution targeting for the **Updates** solution.
 
@@ -125,7 +128,7 @@ Synopsis: Azure Security Center provides several advanced security and threat de
 
 6. Open **Windows Explorer**, browse to **C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs** folder
 
-7. Notice the management packs that have been downloaded that correspond to the features you deployed from Azure Portal:
+7. Sort by **Modified Date**, notice the management packs that have been downloaded that correspond to the features you deployed from Azure Portal:
 
     ![The management packs for the solutions are displayed.](./media/loganalytics-mgmtpacks.png "Notice the solution management packs were downloaded")
 
@@ -149,7 +152,7 @@ Duration: 15 minutes
 
 ### Task 1: Azure Defender Plans
 
-1. In a browser, navigate to your Azure portal (<https://portal.azure.com>).
+1. In a browser, navigate to the Azure portal (<https://portal.azure.com>).
 2. Search for and open **Security Center**
 3. Under **Management**, select **Pricing & Settings**
 4. Select the lab subscription
@@ -183,9 +186,10 @@ Duration: 15 minutes
 9. Select **Apply**
 10. Toggle the **Microsoft Dependency agent** to **On**
 11. Toggle the **Policy Add-on for Kubernetes** to **On**
-12. Select **Save**
+12. Toggle the **Guest Configuration agent** to **On**
+13. Select **Save**
 
-### Task 3: Continuos Export
+### Task 3: Continuous Export
 
 1. On the Settings page, select **Continuous export**
 2. Review the settings on the page, notice that you can send data to an event hub or to another log analytics workspace.
@@ -207,7 +211,9 @@ Duration: 15 minutes
 2. Browse to **Security Center**
 3. Under **General**, select **Security alerts**
 4. In the top navigation, select **Sample alerts**
-5. Select **Create sample alerts**
+5. Select **Create sample alerts**, after a couple minutes, you should see several security alerts generated:
+
+    ![Sample alerts are displayed.](./media/security_center_sample_alerts.png "Sample alerts are displayed")
 
 ## Reference Links
 

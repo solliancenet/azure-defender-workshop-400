@@ -54,7 +54,7 @@
 
 ### Task 2: Perform a JIT request
 
-1. Select the **paw-1** virtual machine, and then select **Request access**.
+1. Select the **wssecuritySUFFIX-paw-1** virtual machine, and then select **Request access**.
 
     ![On the Virtual machines screen, the first listed virtual machine name is selected and highlighted (paw-1), as is Request access button above it.](./media/jit_request_access.png "Request access for paw-1")
 

@@ -8,7 +8,7 @@
 
 2. Open the Azure Security Center
 
-3. Select **Azure Defender**, then scroll down and select **VM vulnerability assessment**
+3. Under **Cloud Security**, select **Azure Defender**, then scroll down and select **VM vulnerability assessment**
 
 4. Select the checkbox to select all the virtual machines
 
@@ -20,15 +20,15 @@
 
 6. Select **Proceed**
 
-7. In the dialog, select **Fix X resources**
+7. In the dialog, select **Fix 6 resources**
 
-  > **Note** After a few hours, the agent will be installed on all selected machines and the assessment data will start to flow into the Security Center.
+  > **Note** After a few hours (up to 12), the agent will be installed on all selected machines and the assessment data will start to flow into the Security Center.
 
 ## Exercise 2: SQL Vulnerability Assessments
 
 ### Task 1: SQL Vulnerability
 
-1. Switch to the Azure Portal.
+1. Switch to the Azure Portal and browse to your resource group
 
 2. Browse to the **wssecuritySUFFIX** Azure Database for SQL instance
 
@@ -46,33 +46,39 @@
 
 7. Select the **wssecuritySUFFIX** storage account
 
-8. Toggle the recurring checkbox to **On**
+8. Toggle the periodic recurring checkbox to **On**
 
-9. Select the **Enable Auditing for better threats investigation experience** link
+9. Set the email to the lab user email
+
+10. Select the **Enable Auditing for better threats investigation experience** link
 
     ![Select the link.](./media/sql_vulnerability_storage_auditing.png "Select the link")
 
-10. Set the email to the lab user email
+11. Toggle the **Enable Azure SQL Auditing** to **On**
 
-11. Select **Save**
+12. Select **Log Analytics** checkbox
 
-12. Toggle the **Enable Azure SQL Auditing** to **On**
+13. Select the **wssecuritySUFFIX** log analytics workspace
 
-13. Select **Log Analytics** checkbox
-
-14. Select the **wssecuritySUFFIX** log analytics workspace
-
-15. Toggle the **Enable Auditing of Microsoft support operations** to **On**
+14. Toggle the **Enable Auditing of Microsoft support operations** to **On**
 
     ![Configure auditing.](./media/sql_vulnerability_storage_auditing_config.png "Configure auditing")
 
+15. Again, select the **Log Analytics** checkbox, then select the lab subscription and the **wssecuritySUFFIX** workspace
+
 16. Select **Save**
 
-17. In the Azure Portal, open the Azure Security Center
+17. In the breadcrumb, select **Server settings**
 
-18. Under **Cloud Security**, select **Azure Defender**
+18. Select **Save** again
 
-19. Scroll to the bottom, select **SQL Vulnerability Assessment**, after a few minutes, you should see all servers across the subscription displayed.
+19. In the Azure Portal, open the Azure Security Center
+
+20. Under **Cloud Security**, select **Azure Defender**
+
+21. Scroll to the bottom, select **SQL Vulnerability Assessment**, after a few minutes, you should see all servers across the subscription displayed.
+
+IMAGE TODO
 
 ## Exercise 3: File Integrity Monitoring
 

@@ -137,9 +137,12 @@ Write-Host "Download Git repo." -ForegroundColor Green -Verbose
 git clone https://github.com/solliancenet/azure-defender-workshop-400.git
 
 # Template deployment
-$rg = Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*-wssecurity" };
+$rg = Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*-security" };
 $resourceGroupName = $rg.ResourceGroupName
 $deploymentId =  (Get-AzResourceGroup -Name $resourceGroupName).Tags["DeploymentId"]
+
+$branch = "main";
+$repoUrl = "solliancenet/azure-defender-workshop-400";
 
 $parametersFile = "c:\labfiles\azure-defender-workshop-400\artifacts\environment-setup\automation\spektra\deploy.parameters.post.json"
 $content = Get-Content -Path $parametersFile -raw;
@@ -149,14 +152,59 @@ $content = $content | ForEach-Object {$_ -Replace "GET-AZUSER-UPN", "$AzureUsern
 $content = $content | ForEach-Object {$_ -Replace "GET-ODL-ID", "$deploymentId"};
 $content = $content | ForEach-Object {$_ -Replace "GET-DEPLOYMENT-ID", "$deploymentId"};
 $content = $content | ForEach-Object {$_ -Replace "GET-REGION", "$($rg.location)"};
-$content = $content | ForEach-Object {$_ -Replace "ARTIFACTS-LOCATION", "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400"};
+$content = $content | ForEach-Object {$_ -Replace "ARTIFACTS-LOCATION", "https://raw.githubusercontent.com/$repoUrl/$branch/artifacts/environment-setup/automation/"};
 $content | Set-Content -Path "$($parametersFile).json";
 
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
-  -TemplateUri "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/master/artifacts/environment-setup/automation/00-core.json" `
+  -TemplateUri "https://raw.githubusercontent.com/$repoUrl/$branch/artifacts/environment-setup/automation/00-core.json" `
   -TemplateParameterFile "$($parametersFile).json"
  
 cd './azure-defender-workshop-400/artifacts/environment-setup/automation'
+
+#upload the bacpac file...
+$bacpacFilename = "Insurance.bacpac"
+
+# The ip address range that you want to allow to access your server
+$startip = "0.0.0.0"
+$endip = "0.0.0.0"
+
+$resourceName = "wssecurity" + $deploymentId;
+$storageAccountName = $resourceName;
+$serverName = $resourceName;
+$storageContainerName = "sqlimport";
+$databaseName = "Insurance";
+
+$storageKey = $(Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName).Value[0];
+$context = $(New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageKey);
+
+$storageContainer = New-AzStorageContainer -Name $storageContainerName -Permission Container -Context $context;
+
+Set-AzStorageBlobContent -Container $storagecontainername -File $bacpacFilename -Context $context
+
+#create a share
+$shareName = "users";
+
+New-AzRmStorageShare -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName -Name $shareName -EnabledProtocol SMB -QuotaGiB 1024;
+
+$user = Get-AzADUser -UserPrincipalName $userName;
+
+Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -ServerName $serverName -DisplayName $user.DisplayName -ObjectId $user.Id;
+
+#allow azure
+$serverFirewallRule = New-AzSqlServerFirewallRule -ResourceGroupName $resourceGroupName -ServerName $serverName -AllowAllAzureIPs
+
+#deploy the bacpac file...
+$importRequest = New-AzSqlDatabaseImport -ResourceGroupName $resourceGroupName `
+    -ServerName $serverName `
+    -DatabaseName $databaseName `
+    -DatabaseMaxSizeBytes 100GB `
+    -StorageKeyType "StorageAccessKey" `
+    -StorageKey $(Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName).Value[0] `
+    -StorageUri "https://$storageaccountname.blob.core.windows.net/$storageContainerName/$bacpacFilename" `
+    -Edition "Standard" `
+    -ServiceObjectiveName "S3" `
+    -AdministratorLogin "wsuser" `
+    -AdministratorLoginPassword $(ConvertTo-SecureString -String $password -AsPlainText -Force)
 
 #execute setup scripts
 Write-Host "Executing post scripts." -ForegroundColor Green -Verbose
