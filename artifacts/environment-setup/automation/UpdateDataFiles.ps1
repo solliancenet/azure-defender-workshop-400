@@ -15,7 +15,7 @@ function UpdateFile($fileName, $tokens)
     Set-Content $fileName $content;
 }
 
-$workshopName = "microsoft-defender-workshop-400";
+$workshopName = "azure-defender-workshop-400";
 
 cd C:\LabFiles\"#IN_WORKSHOP_NAME#"\artifacts
 

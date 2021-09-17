@@ -134,14 +134,14 @@ Connect-AzAccount -Credential $cred | Out-Null
 #download the git repo...
 Write-Host "Download Git repo." -ForegroundColor Green -Verbose
 
-git clone https://github.com/solliancenet/microsoft-defender-workshop-400.git
+git clone https://github.com/solliancenet/azure-defender-workshop-400.git
 
 # Template deployment
 $rg = Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*-wssecurity" };
 $resourceGroupName = $rg.ResourceGroupName
 $deploymentId =  (Get-AzResourceGroup -Name $resourceGroupName).Tags["DeploymentId"]
 
-$parametersFile = "c:\labfiles\microsoft-defender-workshop-400\artifacts\environment-setup\automation\spektra\deploy.parameters.post.json"
+$parametersFile = "c:\labfiles\azure-defender-workshop-400\artifacts\environment-setup\automation\spektra\deploy.parameters.post.json"
 $content = Get-Content -Path $parametersFile -raw;
 
 $content = $content.Replace("GET-AZUSER-PASSWORD",$azurepassword);
@@ -149,14 +149,14 @@ $content = $content | ForEach-Object {$_ -Replace "GET-AZUSER-UPN", "$AzureUsern
 $content = $content | ForEach-Object {$_ -Replace "GET-ODL-ID", "$deploymentId"};
 $content = $content | ForEach-Object {$_ -Replace "GET-DEPLOYMENT-ID", "$deploymentId"};
 $content = $content | ForEach-Object {$_ -Replace "GET-REGION", "$($rg.location)"};
-$content = $content | ForEach-Object {$_ -Replace "ARTIFACTS-LOCATION", "https://raw.githubusercontent.com/solliancenet/microsoft-defender-workshop-400"};
+$content = $content | ForEach-Object {$_ -Replace "ARTIFACTS-LOCATION", "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400"};
 $content | Set-Content -Path "$($parametersFile).json";
 
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
-  -TemplateUri "https://raw.githubusercontent.com/solliancenet/microsoft-defender-workshop-400/master/artifacts/environment-setup/automation/00-core.json" `
+  -TemplateUri "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/master/artifacts/environment-setup/automation/00-core.json" `
   -TemplateParameterFile "$($parametersFile).json"
  
-cd './microsoft-defender-workshop-400/artifacts/environment-setup/automation'
+cd './azure-defender-workshop-400/artifacts/environment-setup/automation'
 
 #execute setup scripts
 Write-Host "Executing post scripts." -ForegroundColor Green -Verbose
