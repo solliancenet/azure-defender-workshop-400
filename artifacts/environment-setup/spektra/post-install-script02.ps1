@@ -164,7 +164,7 @@ $line = "10.2.0.4`tad$deploymentId.com"
 add-content "c:\windows\system32\drivers\etc\HOSTS" $line;
 
 $username = "wsuser"
-$Set-DnsClientServerAddress -InterfaceIndex 8 -ServerAddresses ("10.2.0.4")
+Set-DnsClientServerAddress -InterfaceIndex 8 -ServerAddresses ("10.2.0.4")
 
 #add the hosts entry
 $line = "10.2.0.4`tad$deploymentId.com"

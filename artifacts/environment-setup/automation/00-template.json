@@ -146,12 +146,12 @@
     "adBDCConfigurationModulesURL": "[uri(parameters('_artifactsLocation'), concat('DSC/ConfigureADBDC.zip', parameters('_artifactsLocationSasToken')))]",
     "adBDCConfigurationFunction": "ConfigureADBDC.ps1\\ConfigureADBDC",
     "kubernetesClusterName": "[concat('wssecurity',parameters('uniqueSuffix'))]",
-    "kubernetesVersion": "1.19.9",
+    "kubernetesVersion": "1.21.2",
       "kubernetesDnsPrefix": "[concat('wssecurity',parameters('uniqueSuffix'), '-dns')]",
       "kubernetesAgentOsType": "Linux",
       "kubernetesAgentOsDiskSizeGB": 0,
       "kubernetesAgentCount": 2,
-      "kubernetesAgentVmSize": "Standard_D2_v2",
+      "kubernetesAgentVmSize": "Standard_DS4_v2",
       "kubernetesNetworkProfilePlugin": "kubenet",
       "kubernetesRBACEnabled": true,
       "logAnalyticsName": "[concat('wssecurity',parameters('uniqueSuffix'))]",
@@ -195,6 +195,7 @@
           }
       }
   },
+  /*
   {
     "type": "Microsoft.Network/DDoSProtectionPlans",
     "apiVersion": "2019-02-01",
@@ -204,6 +205,7 @@
     "tags": {},
     "properties": {}
 },
+*/
 {
   "type": "Microsoft.Network/firewallPolicies",
   "apiVersion": "2020-11-01",
@@ -232,7 +234,7 @@
 "properties": {
     "ipConfigurations": [
         {
-            "name": "[parameters('publicIpAddressName')]",
+            "name": "[variables('publicIpAddressName')]",
             "properties": {
                 "subnet": {
                     "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', concat(variables('resourceName'),'-web'), 'AzureFirewallSubnet')]"
@@ -714,7 +716,8 @@
         "resourceId": "[resourceId('Microsoft.Automation/automationAccounts', variables('resourceName'))]"
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Automation/automationAccounts', variables('resourceName'))]"
+        "[resourceId('Microsoft.Automation/automationAccounts', variables('resourceName'))]",
+        "[resourceId('Microsoft.OperationalInsights/workspaces', variables('resourceName'))]"
       ]
     },
     {
@@ -1473,7 +1476,8 @@
       "location": "[variables('location')]",
       "properties": {
         "publicIPAddressVersion": "IPv4",
-        "publicIPAllocationMethod": "Dynamic"
+        "publicIPAllocationMethod": "Dynamic",
+        "publicIPAddressSku": "Standard"
       }
     },
     {
@@ -1733,7 +1737,7 @@
           "autoUpgradeMinorVersion": true,
           "settings": {
               "fileUris": [
-              "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/artifacts/environment-setup/automation/spektra/post-install-script02.ps1"
+              "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/artifacts/environment-setup/spektra/post-install-script02.ps1"
               ]
           },
           "protectedSettings": {
@@ -1852,7 +1856,7 @@
           "autoUpgradeMinorVersion": true,
           "settings": {
               "fileUris": [
-              "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/artifacts/environment-setup/automation/spektra/post-install-script02.ps1"
+              "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/artifacts/environment-setup/spektra/post-install-script02.ps1"
               ]
           },
           "protectedSettings": {
