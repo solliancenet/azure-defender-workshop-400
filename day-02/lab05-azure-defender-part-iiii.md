@@ -147,38 +147,40 @@
 3. Under **Development Tools**, select **API connections**
 4. Select the **wssecurity-asc** connection
 5. Select **Edit API Connection**
-6. Select **Authorize**, login using your lab credentials
+6. If displayed, select **Authorize**, login using your lab credentials
 7. Select **Save**
 8. Select the **wssecurity-o365** connection
 9. Select **Edit API Connection**
-10. Select **Authorize**, login using your lab credentials
+10. If displayed, select **Authorize**, login using your lab credentials
 11. Select **Save**
-12. Select **Edit**
-13. Review the logic app
-14. Under **Settings**, select **Identity**
-15. For the system assigned identity, select **Azure role assignments**
-16. Select **Add role assignment**
-17. For the scope, select **Storage**
-18. Select the lab subscription
-19. Select the **wssecuritySUFFIX** storage account
-20. Select the **Storage Blob Data Owner** role
-21. Select **Save**
-22. Select **Add role assignment**
-23. For the scope, select **Subscription**
-24. Select the lab subscription
-25. Select the **Security administrator** role
-26. Select **Save**
+12. Browse back to the logic app and select the **Overview** menu item
+13. In the top navigation, select **Edit**, review the logic app
+14. Exit the editor mode
+15. Under **Settings**, select **Identity**
+16. For the system assigned identity, select **Azure role assignments**
+17. Select **Add role assignment**
+18. For the scope, select **Storage**
+19. Select the lab subscription
+20. Select the **wssecuritySUFFIX** storage account
+21. Select the **Storage Blob Data Owner** role
+22. Select **Save**
+23. Select **Add role assignment**
+24. For the scope, select **Subscription**
+25. Select the lab subscription
+26. Select the **Security Admin** role
+27. Select **Save**
 
 ### Task 2: Setup Automation Trigger
 
 1. Browse to Azure Security Center
 2. Under **Management**, select **Workflow automation**
-3. For the name, type `Ask-Remove-MalwareBlob`
-4. Select the ***-security** resource group
-5. For the **Select Security Center data types**, select **Threat detection alerts**
-6. For the alert name contains, type **Potential malware uploaded to a storage blob container**
-7. For the logic app, select `Ask-Remove-MalwareBlob`
-8. Select **Create**
+3. In the top navigation, select **Add workflow automation**
+4. For the name, type `Ask-Remove-MalwareBlob`
+5. Select the ***-security** resource group
+6. For the **Select Security Center data types**, select **Threat detection alerts**
+7. For the alert name contains, type **Potential malware uploaded to a storage blob container**
+8. For the logic app, select `Ask-Remove-MalwareBlob`
+9. Select **Create**
 
 ### Task 3: Upload malware
 

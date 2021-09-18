@@ -136,7 +136,7 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 Connect-AzAccount -Credential $cred | Out-Null
  
 # Template deployment
-$resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*-security*" }).ResourceGroupName
+$resourceGroupName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*-security" }).ResourceGroupName
 $deploymentId =  (Get-AzResourceGroup -Name $resourceGroupName).Tags["DeploymentId"]
 
 $url = "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/master/artifacts/environment-setup/spektra/deploy.parameters.post.json"
@@ -174,6 +174,6 @@ add-content "c:\windows\system32\drivers\etc\HOSTS" $line;
 $username = "wsuser"
 $securepassword = $password | convertto-securestring -AsPlainText -Force;
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $securepassword;
-add-computer -computername paw-1 -domainname "ad$deploymentId.com" –credential $cred -restart –force;
+add-computer -computername paw-1 -domainname "ad$deploymentId.com" -credential $cred -restart -force;
 
 Stop-Transcript
