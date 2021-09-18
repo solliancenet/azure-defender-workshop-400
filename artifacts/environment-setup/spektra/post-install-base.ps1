@@ -121,7 +121,7 @@ $resourceGroupName = $rg.ResourceGroupName
 $deploymentId =  (Get-AzResourceGroup -Name $resourceGroupName).Tags["DeploymentId"]
 
 $branch = "main";
-$workshopName = "";
+$workshopName = "azure-defender-workshop-400";
 
 $parametersFile = "c:\labfiles\azure-defender-workshop-400\artifacts\environment-setup\spektra\deploy.parameters.post.json"
 $content = Get-Content -Path $parametersFile -raw;

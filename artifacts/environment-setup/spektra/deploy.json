@@ -38,7 +38,7 @@
       "subnetName": "Subnet",
       "subnetPrefix": "10.0.0.0/24",
       "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets/',variables('virtualNetworkName'), variables('subnetName'))]",
-      "virtualMachineSize": "Standard_D2s_v3",
+      "virtualMachineSize": "Standard_D4s_v3",
       "virtualNetworkName": "labvm-vnet",
       "vmName": "[concat('labvm-',parameters('deploymentId'))]",
       "adlsStorageAccountName": "[concat('asadatalake', parameters('deploymentId'))]",
@@ -153,9 +153,9 @@
           },
           "storageProfile": {
             "imageReference": {
-              "publisher": "microsoftvisualstudio",
-              "offer": "visualstudio2019latest",
-              "sku": "vs-2019-ent-latest-ws2019",
+              "publisher": "MicrosoftWindowsDesktop",
+              "offer": "Windows-10",
+              "sku": "20h1-pro-g2",
               "version": "latest"
             },
             "osDisk": {
@@ -163,7 +163,8 @@
               "name": "[concat(variables('vmName'), '-osdisk')]",
               "managedDisk": {
                 "storageAccountType": "Premium_LRS"
-              }
+              },
+              "diskSizeGB": 200
             },
             "dataDisks": [
   

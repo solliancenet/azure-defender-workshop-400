@@ -107,6 +107,10 @@ InstallChrome
         
 InstallAzureCli
 
+#InstallVisualStudio
+
+#InstallVisualStudioCode
+
 InstallTor
 
 Uninstall-AzureRm -ea SilentlyContinue
