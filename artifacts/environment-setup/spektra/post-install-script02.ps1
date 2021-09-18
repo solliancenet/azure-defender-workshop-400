@@ -154,26 +154,26 @@ git clone https://github.com/solliancenet/security-defender-workshop-400.git syn
 
 cd './synapse-ws-L400/artifacts/environment-setup/automation'
 
-sleep 20
+sleep 20;
 
 #join the domain
-Set-DnsClientServerAddress -InterfaceIndex 8 -ServerAddresses ("10.2.0.4")
+Set-DnsClientServerAddress -InterfaceIndex 8 -ServerAddresses ("10.2.0.4");
 
 #add the hosts entry
-$line = "10.2.0.4`tad$deploymentId.com"
+$line = "10.2.0.4`tad$deploymentId.com";
 add-content "c:\windows\system32\drivers\etc\HOSTS" $line;
 
-$username = "wsuser"
-Set-DnsClientServerAddress -InterfaceIndex 8 -ServerAddresses ("10.2.0.4")
+$username = "wsuser";
+Set-DnsClientServerAddress -InterfaceIndex 8 -ServerAddresses ("10.2.0.4");
 
 #add the hosts entry
-$line = "10.2.0.4`tad$deploymentId.com"
+$line = "10.2.0.4`tad$deploymentId.com";
 add-content "c:\windows\system32\drivers\etc\HOSTS" $line;
 
 #join the domain...
 $username = "wsuser"
-$securepassword = $password | convertto-securestring -AsPlainText -Force
-$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $securepassword
-add-computer -computername paw-1 -domainname ad$deploymentId.com –credential $cred -restart –force
+$securepassword = $password | convertto-securestring -AsPlainText -Force;
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $securepassword;
+add-computer -computername paw-1 -domainname "ad$deploymentId.com" –credential $cred -restart –force;
 
 Stop-Transcript

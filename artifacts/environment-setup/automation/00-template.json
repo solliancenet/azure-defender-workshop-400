@@ -1474,10 +1474,13 @@
       "type": "Microsoft.Network/publicIPAddresses",
       "apiVersion": "2017-08-01",
       "location": "[variables('location')]",
+      "sku": {
+        "name": "Standard",
+        "tier": "Regional"
+    },
       "properties": {
         "publicIPAddressVersion": "IPv4",
-        "publicIPAllocationMethod": "Dynamic",
-        "publicIPAddressSku": "Standard"
+        "publicIPAllocationMethod": "Static"
       }
     },
     {
