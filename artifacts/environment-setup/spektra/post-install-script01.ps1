@@ -142,9 +142,11 @@ $resourceGroupName = $rg.ResourceGroupName
 $deploymentId =  (Get-AzResourceGroup -Name $resourceGroupName).Tags["DeploymentId"]
 
 $branch = "main";
-$repoUrl = "solliancenet/azure-defender-workshop-400";
+$workshopName = "azure-defender-workshop-400";
+$repoUrl = "solliancenet/$workshopName";
 
-$parametersFile = "c:\labfiles\azure-defender-workshop-400\artifacts\environment-setup\automation\spektra\deploy.parameters.post.json"
+$templatesFile = "c:\labfiles\azure-defender-workshop-400\artifacts\environment-setup\automation\00-template.json";
+$parametersFile = "c:\labfiles\azure-defender-workshop-400\artifacts\environment-setup\spektra\deploy.parameters.post.json"
 $content = Get-Content -Path $parametersFile -raw;
 
 $content = $content.Replace("GET-AZUSER-PASSWORD",$azurepassword);
@@ -156,7 +158,7 @@ $content = $content | ForEach-Object {$_ -Replace "ARTIFACTS-LOCATION", "https:/
 $content | Set-Content -Path "$($parametersFile).json";
 
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
-  -TemplateUri "https://raw.githubusercontent.com/$repoUrl/$branch/artifacts/environment-setup/automation/00-core.json" `
+  -TemplateFile $templatesFile `
   -TemplateParameterFile "$($parametersFile).json"
  
 cd './azure-defender-workshop-400/artifacts/environment-setup/automation'

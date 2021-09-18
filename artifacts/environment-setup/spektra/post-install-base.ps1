@@ -120,7 +120,10 @@ $rg = Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*-wssecur
 $resourceGroupName = $rg.ResourceGroupName
 $deploymentId =  (Get-AzResourceGroup -Name $resourceGroupName).Tags["DeploymentId"]
 
-$parametersFile = "c:\labfiles\azure-defender-workshop-400\artifacts\environment-setup\automation\spektra\deploy.parameters.post.json"
+$branch = "main";
+$workshopName = "";
+
+$parametersFile = "c:\labfiles\azure-defender-workshop-400\artifacts\environment-setup\spektra\deploy.parameters.post.json"
 $content = Get-Content -Path $parametersFile -raw;
 
 $content = $content.Replace("GET-AZUSER-PASSWORD",$azurepassword);
