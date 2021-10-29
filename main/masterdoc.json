@@ -45,12 +45,12 @@
         }
         ,
         {
-            "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-02/lab05-azure-defender-part-iii.md",
+            "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-02/lab05-azure-defender-part-iv.md",
           "Order": 10
         }
         ,
         {
-        "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-02/lab06-azure-defender-part-iv.md",
+        "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-02/lab06-azure-defender-part-v.md",
           "Order": 11
         }
       ]
