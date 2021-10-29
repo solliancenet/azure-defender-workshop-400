@@ -4,53 +4,53 @@
       "Language": "English",
       "Files": [
         {
-          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop/main/day-01/activity01-azure-defender-onboarding.md",
+          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-01/activity01-azure-defender-onboarding.md",
           "Order": 1
         },
         {
-          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop/main/day-01/activity02-azure-defender-onboarding-discussion.md",
+          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-01/activity02-azure-defender-onboarding-discussion.md",
           "Order": 2
         },
         {
-          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop/main/day-01/lab01-azure-defender-part-i.md",
+          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-01/lab01-azure-defender-part-i.md",
           "Order": 3
         }     ,
         {
-          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop/main/day-01/lab02-azure-defender-part-ii.md",
+          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-01/lab02-azure-defender-part-ii.md",
           "Order": 4
         },
         {
-          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop/main/day-01/lab03-azure-defender-part-iii.md",
+          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-01/lab03-azure-defender-part-iii.md",
           "Order": 5
         }
         ,
         {
-          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop/main/day-01/lab04-security-portals.md",
+          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-01/lab04-security-portals.md",
           "Order": 6
         }
         ,
         {
-          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop/master/labs/01_Lab06.md",
+          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/master/labs/01_Lab06.md",
           "Order": 7
         }
         ,
         {
-          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop/master/labs/02_Lab01.md",
+          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/master/labs/02_Lab01.md",
           "Order": 8
         }
         ,
         {
-          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop/master/labs/02_Lab02.md",
+          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/master/labs/02_Lab02.md",
           "Order": 9
         }
         ,
         {
-          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop/master/labs/02_Lab03.md",
+          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/master/labs/02_Lab03.md",
           "Order": 10
         }
         ,
         {
-          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop/master/labs/02_Lab04.md",
+          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/master/labs/02_Lab04.md",
           "Order": 11
         }
       ]
