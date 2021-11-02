@@ -132,6 +132,113 @@
   },
   "resources": [
     {
+      "type": "Microsoft.EventHub/namespaces",
+      "apiVersion": "2021-06-01-preview",
+      "name": "[concat(variables('resourceName'), '')]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+          "name": "Basic",
+          "tier": "Basic",
+          "capacity": 1
+      },
+      "properties": {
+          "disableLocalAuth": false,
+          "zoneRedundant": true,
+          "isAutoInflateEnabled": false,
+          "maximumThroughputUnits": 0,
+          "kafkaEnabled": false
+      }
+  },
+  {
+      "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
+      "apiVersion": "2021-06-01-preview",
+      "name": "[concat(variables('resourceName'), '/All')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+          "[resourceId('Microsoft.EventHub/namespaces', variables('resourceName'))]"
+      ],
+      "properties": {
+          "rights": [
+              "Manage",
+              "Listen",
+              "Send"
+          ]
+      }
+  },
+  {
+      "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
+      "apiVersion": "2021-06-01-preview",
+      "name": "[concat(variables('resourceName'), '/RootManageSharedAccessKey')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+          "[resourceId('Microsoft.EventHub/namespaces', variables('resourceName'))]"
+      ],
+      "properties": {
+          "rights": [
+              "Listen",
+              "Manage",
+              "Send"
+          ]
+      }
+  },
+  {
+      "type": "Microsoft.EventHub/namespaces/eventhubs",
+      "apiVersion": "2021-06-01-preview",
+      "name": "[concat(variables('resourceName'), '/', variables('resourceName'))]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+          "[resourceId('Microsoft.EventHub/namespaces', variables('resourceName'))]"
+      ],
+      "properties": {
+          "messageRetentionInDays": 1,
+          "partitionCount": 2,
+          "status": "Active"
+      }
+  },
+  {
+      "type": "Microsoft.EventHub/namespaces/networkRuleSets",
+      "apiVersion": "2021-06-01-preview",
+      "name": "[concat(variables('resourceName'), '/default')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+          "[resourceId('Microsoft.EventHub/namespaces', variables('resourceName'))]"
+      ],
+      "properties": {
+          "publicNetworkAccess": "Enabled",
+          "defaultAction": "Allow",
+          "virtualNetworkRules": [],
+          "ipRules": []
+      }
+  },
+  {
+      "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+      "apiVersion": "2021-06-01-preview",
+      "name": "[concat(variables('resourceName'), '/', variables('resourceName'), '/All')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+          "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('resourceName'), variables('resourceName'))]",
+          "[resourceId('Microsoft.EventHub/namespaces', variables('resourceName'))]"
+      ],
+      "properties": {
+          "rights": [
+              "Manage",
+              "Listen",
+              "Send"
+          ]
+      }
+  },
+  {
+      "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+      "apiVersion": "2021-06-01-preview",
+      "name": "[concat(variables('resourceName'), '/', variables('resourceName'), '/$Default')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('resourceName'), variables('resourceName'))]",
+        "[resourceId('Microsoft.EventHub/namespaces', variables('resourceName'))]"
+      ],
+      "properties": {}
+  }
+    {
       "type": "Microsoft.Resources/tags",
       "apiVersion": "2021-04-01",
       "name": "default",

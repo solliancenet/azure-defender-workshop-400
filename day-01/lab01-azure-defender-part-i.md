@@ -8,8 +8,11 @@ Synopsis: Azure Security Center provides several advanced security and threat de
 
 ### Task 0: Setup Azure Security Center
 
-1. Open the Azure Portal
-2. Search for **Security Center**, select it
+1. Open the [Azure Portal](https://portal.azure.com/#home)
+2. In the global search, search for **Security Center**, select it
+
+    ![Search for Security Center.](./media/asc_search.png "Search for Security Center")
+
 3. If you are presented with the getting started page, select **Upgrade**, otherwise skip to Task 1.
 
     ![Upgrade Security Center.](./media/securitycenter-upgrade.png "Upgrade Security Center")
@@ -27,7 +30,7 @@ Synopsis: Azure Security Center provides several advanced security and threat de
 
 ### Task 1: Linux VM and Microsoft Monitoring Agent (MMA) manual install
 
-1. In the Azure Portal, browse to your **wssecuritySUFFIX** resource group, then select the **wssecuritySUFFIX** **Log Analytics Workspace**.
+1. In the Azure Portal, browse to your ***-SUFFIX-security** resource group, then select the **wssecuritySUFFIX** **Log Analytics Workspace**.
 
     ![The log analytics workspace is highlighted.](./media/LogAnalyticsWorkspace.png "Select the log analytics workspace")
 
@@ -37,23 +40,17 @@ Synopsis: Azure Security Center provides several advanced security and threat de
 
    ![Agents management blade link is highlighted along with the id and key for the workspace](./media/LogAnalyticsWorkspace_Settings.png "Copy the workspace id and key")
 
-4. Switch to the Remote Desktop Connection to the **wssecurity-SUFFIX-paw-1**. If not logged in, login to the **wssecuritySUFFIX-paw-1** virtual machine using the `wsuser` username and the lab password.
+4. In the Azure Portal, browse to the **wssecurity-SUFFIX-paw-1** virtual machine and select it
+5. Select **Connect->RDP**, then select **Download RDP File**.  Open the file to start an RDP connection.
+6. Login to the **wssecuritySUFFIX-paw-1** virtual machine using the `wsuser` username and the lab password.
+7. Open a Windows PowerShell window and run the following:
 
-5. Open the **Putty** tool (you can also use Powershell to connect over SSH)
+    ```PowerShell
+    ssh wsuser@10.0.0.5
+    ```
 
-    > **Note** If putty is not installed, download it from [here](https://the.earth.li/~sgtatham/putty/0.75/w64/).
-
-6. Login to the **wssecuritySUFFIX-linux-1** machine using the `wsuser` username and lab password.  
-
-    - Enter **10.0.0.5** for the IP Address.
-    - Select **Open**
-    - In the dialog, select **Accept**
-    - Enter the **wsuser**
-    - Enter the lab password
-
-   ![Putty window with linux-1 as the host.](./media/putty-linux-1.png "Use Putty to login to linux-1")
-
-7. Run the following commands, be sure to replace the workspace tokens with the values you records above:
+8. In the prompt, type **yes**, login using the lab password.  
+9. Run the following commands, be sure to replace the workspace tokens with the values you records above:
 
     ```bash
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR_WORKSPACE_ID> -s <YOUR_WORKSPACE_KEY>
@@ -62,9 +59,8 @@ Synopsis: Azure Security Center provides several advanced security and threat de
 
     ```
 
-8. Switch back to the Azure Portal.
-
-9. In the blade menu, select **Agents Management** and then select **Linux Servers**, you should see **1 LINUX COMPUTER CONNECTED**.
+10. Switch back to the Azure Portal.
+11. In the blade menu, select **Agents Management** and then select **Linux Servers**, you should see **1 LINUX COMPUTER CONNECTED**.  You have successfully manually deployed the agent, however, deploying manually would be time consuming so we will explore how to setup auto-deployment for newly created resources in future exercises.
 
    ![The displayed of connected linux computers for the workspace.](./media/loganalytics-linux-computers.png "Review the linux computers connected to workspace")
 
@@ -73,32 +69,38 @@ Synopsis: Azure Security Center provides several advanced security and threat de
 ### Task 3: Enable change tracking and update management
 
 1. Switch back to the Azure Portal.
-2. In the search menu, type **Virtual Machines**, then select it.
-3. Highlight all the virtual machines that are displayed
+2. In the global search menu, type **Virtual Machines**, then select it.
+3. Select all the virtual machines that are displayed
 4. In the top menu, select **Services**, then select **Change Tracking**.
 
    ![The virtual machines are selected and the change tracking menu item is selected.](./media/virtual-machines-svcs-changetracking.png "Enable change tracking for the virtual machines")
 
 5. Select the **CUSTOM** radio button.
-6. Select **change**, select matching region
+6. Select **change**, select matching region.  Notice that we have already setup the corresponding automation account.
+
+    ![Select the workspace.](./media/change_tracking_region.png "Select the workspace")
+
+    > **NOTE** If you do not pre-link an automation account, this blade dialog will not deploy a link reliability.  You should do this before you create log analytic services. See [Region Mappings](https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings) for more information.
+
 7. Select the Log Analytics Workspace **wssecuritySUFFIX** that was deployed with the lab ARM template.
 
     ![The change tracking blade is displayed with custom and change link highlighted.](./media/virtual-machines-svcs-changetracking-config.png "Select CUSTOM and then select change links")
 
-    > **NOTE** If you do not pre-link an automation account, this blade dialog will not deploy a link reliability.  You should do this before you create log analytic services. See [Region Mappings](https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings) for more information.
-
 8. Select all the virtual machines, then select **Enable**.
-9. Navigate back to the **Virtual Machines** blade, again highlight the **wssecurity-SUFFIX-paw-1** and **wssecurity-SUFFIX-linux-1** virtual machines that were deployed.
+9. Navigate back to the **Virtual Machines** blade, select all the virtual machines that are displayed.
 10. In the top menu, select **Services**, then select **Inventory**.
 11. Select the **CUSTOM** radio button.
 12. Select **change**, select the **Log Analytics Workspace** that was deployed with the lab ARM template.
 13. Notice that all the VMs are already enabled for the workspace based on the last task.
-14. Navigate back to the **Virtual Machines** blade, again, highlight the **paw-1** and **linux-1** virtual machines that were deployed.
+
+    ![Already enabled.](./media/inventory_already_enabled.png "Already enabled")
+
+14. Navigate back to the **Virtual Machines** blade, select all the virtual machines that are displayed.
 15. In the top menu, select **Services**, then select **Update Management**.
 16. Select the **CUSTOM** radio button.
 17. Select **change**, select the **Log Analytics Workspace** that was deployed with the lab ARM template.
 18. Select all the virtual machines, then select **Enable**.
-19. Browse to your resource group, then select your Log Analytics workspace.
+19. Browse to your resource group, then select your **wssecuritySUFFIX** Log Analytics workspace.
 20. Under the **General** section, select the **Solutions** blade, you should see the **ChangeTracking** and **Updates** solutions were added to your workspace.
 21. Select the **ChangeTracking** solution.
 
@@ -110,6 +112,8 @@ Synopsis: Azure Security Center provides several advanced security and threat de
 
 23. Remove any scopes that are displayed via the ellipses to the right of the items.
 24. Repeat the steps to remove the solution targeting for the **Updates** solution.
+
+    > **NOTE** You must remove the solution targeting before you can move on.  You may need to wait 5-10 minutes before the system will alow you to remove them.
 
 ### Task 4: Review MMA configuration
 
@@ -141,8 +145,15 @@ Duration: 5 minutes
 1. Switch to the Azure Portal
 2. Browse to your **wssecuritySUFFIX** Log Analytics workspace
 3. Under **Workspace Data Sources**, select **Azure Activity Log**
+
+    ![Select Azure Activity Log.](./media/workspace_data_sources_azure_activity_log.png "Select Azure Activity Log")
+
 4. Select your lab **Subscription**
-5. Select **Connect**, you should now see `Connected`
+5. Select **Connect**
+
+    ![Connect Azure Activity Log.](./media/connect_activity_log.png "Connect Azure Activity Log")
+
+6. Navigate back to the activity log data source blade, you should now see `Connected`
 
     ![Azure Activity logs connected to Log Analytics.](./media/loganalytics_azureactivitylogs_connected.png "Azure Activity logs connected to Log Analytics")
 
@@ -152,11 +163,17 @@ Duration: 15 minutes
 
 ### Task 1: Microsoft Defender for Cloud Plans
 
-1. In a browser, navigate to the Azure portal (<https://portal.azure.com>).
-2. Search for and open **Security Center**
-3. Under **Management**, select **Pricing & Settings**
-4. Select the lab subscription
-5. On the Microsoft Defender for Cloud Plans, click **Enable all** then select **Save**
+1. In the global navigation search for and select **Security Center**
+2. Under **Management**, select **Environment Settings**
+3. Select the lab subscription
+
+    ![Select Environment settings.](./media/asc_envrionment_settings.png "Select Environment settings")
+
+4. Under **Settings**, select **Defender plans**
+5. In the Microsoft Defender for Cloud Plans section, click **Enable all** then select **Save**
+
+    ![Enable Defender plans.](./media/asc_defender_cloud_plans_enable.png "Enable Defender plans")
+
 6. Select the **wssecuritySUFFIX** log analytics resource
 7. On the Microsoft Defender for Cloud Plans, select **Azure Defender On**
 8. Select **Save**
@@ -169,39 +186,45 @@ Duration: 15 minutes
 
 ### Task 2: Auto provisioning
 
-1. Under **Management**, select **Pricing & Settings**
+1. Under **Management**, select **Environment Settings**
 2. Select the lab subscription
-3. On the Settings page, select **Auto provisioning**
-4. Toggle the **Log Analytics agent for Azure VMs** to **On**
+3. Under **Settings**, select **Auto provisioning**
+4. If disabled, toggle the **Log Analytics agent for Azure VMs** to **On**
+5. Toggle the **Log Analytics agent for Azure Arc Machines** to **On**
+6. In the dialog, select the **wssecuritySUFFIX** workspace
+7. Select **Apply**
+8. Toggle the **Vulnerability assessment for machines** to **On**
+9. In the dialog, select the **ASC integrated vulnerability scanner powered by Qualys** workspace
+10. Select **Apply**
 
-    ![Enable auto provisioning.](./media/asc_subscription_auto_provision.png "Enable auto provisioning")
+    ![Select Qualys agent.](./media/asc_extension_vulnerability_assessment.png "Select Qualys agent")
 
-5. Select **Edit configuration**
-6. In the dialog, select **Connect Azure VMs to a different workspace**
-7. Select the **wssecuritySUFFIX** workspace
-8. Select **Existing and new VMs**
+11. Toggle the **Guest Configuration agent** to **On**
+12. Toggle the **Microsoft Dependency agent** to **On**
+13. Toggle the **Policy Add-on for Kubernetes** to **On**
+14. Select **Save**
 
-    ![Set the workspace.](./media/asc_subscription_auto_provision_config.png "Set the workspace")
-
-9. Select **Apply**
-10. Toggle the **Microsoft Dependency agent** to **On**
-11. Toggle the **Policy Add-on for Kubernetes** to **On**
-12. Toggle the **Guest Configuration agent** to **On**
-13. Select **Save**
+    ![Review final settings](./media/asc_auto_provisioning_settings.png "Review final settings")
 
 ### Task 3: Continuous Export
 
 1. On the Settings page, select **Continuous export**
 2. Review the settings on the page, notice that you can send data to an event hub or to another log analytics workspace.
 
-  ![Continuous export settings.](./media/asc_subscription_continous_export.png "Continuous export settings")
+    ![Continuous export settings.](./media/asc_subscription_continous_export.png "Continuous export settings")
 
-### Task 4: Cloud Connectors
+3. Select all the **Exported data types**
 
-1. On the Settings page, select **Cloud connectors**
-2. Review the settings on the page, notice that you can connect your AWS or GCP cloud accounts
+    ![Select all types.](./media/asc_event_hub_export_1.png "Select all types")
 
-  ![Cloud connector settings.](./media/asc_subscription_cloud_connectors.png "Cloud connector settings")
+4. For the resource group, select the ***-SUFFIX-security** resource group
+5. Select the **wssecuritySUFFIX** namespace
+6. Select the **wssecuritySUFFIX** event hub
+7. Select the **All** policy.
+
+    ![EventHub, Continuous export settings.](./media/asc_event_hub_configuration.png "EventHub, Continuous export settings")
+
+8. Select **Save**
 
 ## Exercise 8: Creating Sample Alerts
 
@@ -210,8 +233,11 @@ Duration: 15 minutes
 1. Open the Azure Portal
 2. Browse to **Security Center**
 3. Under **General**, select **Security alerts**
+
+    ![Select Sample alerts.](./media/asc_sample_alerts.png "Select Sample alerts.")
+
 4. In the top navigation, select **Sample alerts**
-5. Select **Create sample alerts**, after a couple minutes, you should see several security alerts generated:
+5. Select **Create sample alerts**, after a few minutes, you should see several security alerts generated:
 
     ![Sample alerts are displayed.](./media/security_center_sample_alerts.png "Sample alerts are displayed")
 
@@ -219,3 +245,4 @@ Duration: 15 minutes
 
 - [Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro)
 - [Overview of Azure Monitor agents](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/agents-overview)
+- [Log Analytics](https://docs.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-overview)

@@ -6,21 +6,27 @@
 
 1. Switch to the Azure Portal.
 
-2. Open the Azure Security Center
+2. In the global search for and select the **Security Center**
 
-3. Under **Cloud Security**, select **Azure Defender**, then scroll down and select **VM vulnerability assessment**
+3. Under **Cloud Security**, select **Workload protections**
 
-4. Select the checkbox to select all the virtual machines
+    ![Select the workload protections link.](./media/asc_workload_protections.png "Select the workload protections link")
+
+4. Scroll down, under **Advanced protection**, select **VM vulnerability assessment**
+
+    ![Select VM Vulnerability Assessments.](./media/asc_vm_vulnerability.png "Select VM Vulnerability Assessments")
+
+5. Select the checkbox to select all the virtual machines
 
     ![Select all VMs.](./media/vm_vulnerability_vms.png "Select all VMs")
 
-5. Select **Fix**
+6. Select **Fix**
 
     ![Select the Qualsys agent.](./media/vm_vulnerability_agent.png "Select the Qualsys agent")
 
-6. Select **Proceed**
+7. Select **Proceed**
 
-7. In the dialog, select **Fix 6 resources**
+8. In the dialog, select **Fix 6 resources**
 
   > **Note** After a few hours (up to 12), the agent will be installed on all selected machines and the assessment data will start to flow into the Security Center.
 
@@ -32,51 +38,51 @@
 
 2. Browse to the **wssecuritySUFFIX** Azure Database for SQL instance
 
-3. Under **Security**, select **Security Center**, if you see **Enable Azure Defender for SQL**, select it.
+3. Under **Security**, select **Microsoft Defender for Cloud**, if you see **Enable Azure Defender for SQL**, select it. After a few minutes, you should see the recommendations and security alerts for the single SQL resource (if any).
 
-4. After a few minutes, you should see the recommendations and security alerts for the single SQL resource (if any)
+    ![Enable security.](./media/sql_vulnerability_enable.png "Enable security")
 
-5. Select the **(Configure)** link
+4. Refresh the page, select the **(Configure)** link
 
     ![Select the configure link.](./media/sql_vulnerability_configure.png "Select the configure link")
 
-6. Select the **Select storage account** link
+5. Select the **Select storage account** link
   
     ![Select the storage account link.](./media/sql_vulnerability_storage_account.png "Select the storage account link")
 
-7. Select the **wssecuritySUFFIX** storage account
+6. Change the storage account to the **wssecuritySUFFIX** storage account
 
-8. Toggle the periodic recurring checkbox to **On**
+7. Toggle the periodic recurring checkbox to **On**
 
-9. Set the email to the lab user email
+8. Set the email to the lab user email
 
-10. Select the **Enable Auditing for better threats investigation experience** link
+9. Select the **Enable Auditing for better threats investigation experience** link
 
     ![Select the link.](./media/sql_vulnerability_storage_auditing.png "Select the link")
 
-11. Toggle the **Enable Azure SQL Auditing** to **On**
+10. Toggle the **Enable Azure SQL Auditing** to **On**
 
-12. Select **Log Analytics** checkbox
+11. Select **Log Analytics** checkbox
 
-13. Select the **wssecuritySUFFIX** log analytics workspace
+12. Select the **wssecuritySUFFIX** log analytics workspace
 
-14. Toggle the **Enable Auditing of Microsoft support operations** to **On**
+13. Toggle the **Enable Auditing of Microsoft support operations** to **On**
 
     ![Configure auditing.](./media/sql_vulnerability_storage_auditing_config.png "Configure auditing")
 
-15. Again, select the **Log Analytics** checkbox, then select the lab subscription and the **wssecuritySUFFIX** workspace
+14. Again, select the **Log Analytics** checkbox, then select the lab subscription and the **wssecuritySUFFIX** workspace
 
-16. Select **Save**
+15. Select **Save**
 
-17. In the breadcrumb, select **Server settings**
+16. In the breadcrumb, select **Server settings**
 
-18. Select **Save** again
+17. Select **Save** again
 
-19. In the Azure Portal, open the Azure Security Center
+18. In the Azure Portal, open **Security Center**
 
-20. Under **Cloud Security**, select **Azure Defender**
+19. Under **Cloud Security**, select **Workload Protections**
 
-21. Scroll to the bottom, select **SQL Vulnerability Assessment**, after a few minutes, you should see all servers across the subscription displayed.
+20. Scroll to the bottom, select **SQL Vulnerability Assessment**, after a few minutes, you should see all servers across the subscription displayed.
 
 IMAGE TODO
 
@@ -84,9 +90,9 @@ IMAGE TODO
 
 ### Task 1: File Integrity Monitoring
 
-1. Navigate back to the main Azure Security Center page
+1. Navigate back to the Security Center
 
-2. In the blade menu, under **Cloud Security**, select **Azure Defender**
+2. In the blade menu, under **Cloud Security**, select **Workload protections**
 
 3. Scroll to the bottom and select **File Integrity Monitoring**.
 
@@ -114,6 +120,9 @@ IMAGE TODO
 
 6. Select the **Windows Files** tab.
 7. Select **+Add**.
+
+    ![Add windows item.](./media/fileintegrity-windows.png "Add windows item")
+
 8. For the item name, type **HOSTS**.
 9. For the path, type **c:\windows\system32\drivers\etc\\\***.
 10. For the path type, select **Folder**
@@ -124,24 +133,28 @@ IMAGE TODO
     ![The settings page is displayed with the links highlighted.](./media/fileintegrity-addentry.png "Add a new file integrity monitoring item")
 
 14. Select the **File Content** tab.
-15. Select **Link**, then select the storage account tied to your lab.
+15. Select **Link**, then select the **wssecuritySUFFIX** storage account tied to your lab.
 
-    > **NOTE** It will take 30-60 minutes for Log Analytics and its management packs to execute on all your VMs. As you may not have that much time with this lab, screen shots are provided as to what results you will eventually get.
+    > **NOTE** It will take 15-30 minutes for Log Analytics and its management packs to execute on all your VMs. As you may not have that much time with this lab, screen shots are provided as to what results you will eventually get.
 
     ![The file content page is displayed with the links highlighted.](./media/fileintegrity-filecontent.png "Link a storage account for file changes")
 
 16. Select **Save**
-17. Switch to the Remote Desktop Connection to the **paw-1**.
-18. Open the **c:\windows\system32\drivers\etc\hosts** file.
-19. Add the following entry:
+17. Switch to the Remote Desktop Connection to the **wssecuritySUFFIX-paw-1**.
+18. Open **Event Viewer**.
+19. Expand the **Applications and Services Logs**, then select **Operations Manager**.
+20. Right-click **Operations Manager**, select **Filter Current Log**.
+21. Wait for a new event with the event id of **5001** to be displayed.
+22. Open the **c:\windows\system32\drivers\etc\hosts** file.
+23. Add the following entry:
 
     ```cmd
     10.0.0.6    linux-2
     ```
 
-20. Save the file.
-21. After about 30-60 minutes, the Log Analytics workspace will start to pickup changes to your files, registry settings and windows services.
-    - Switch to your Log Analytics workspace
+24. Save the file.
+25. After about 15-30 minutes, the Log Analytics workspace will start to pickup changes to your files, registry settings and windows services.
+    - Switch to your **wssecuritySUFFIX** Log Analytics workspace
     - Under **General**, select **Logs**
     - Run the following query:
 
@@ -155,7 +168,7 @@ IMAGE TODO
 
     ![The file changes are saved to the logs of the workspace.](./media/fileintegrity-logchanges.png "Review the file change logs for the paw-1 machine in the log analytics workspace")
 
-22. You will also start to see the file snapshots show up in the storage account:
+26. You will also start to see the file snapshots show up in the storage account.  Browse to the **wssecuritySUFFIX** storage, then select **changetrackingblob** container, then select the folder that matches the machine name:
 
     ![The file changes are displayed in the storage account.](./media/fileintegrity-snapshots.png "The file changes are displayed in the storage account")
 
@@ -164,6 +177,9 @@ IMAGE TODO
 1. Browse to the **wssecuritySUFFIX** automation account
 2. Under **Configuration Management**, select **Change tracking**
 3. In the **Change Types** drop down filter, select **Files**
+
+    ![Select Files change type.](./media/fileintegrity-automation-changetracking.png "Select Files change type.")
+
 4. Select the **HOSTS** file, in the dialog, review the file changes
 
     ![The file changes are displayed.](./media/automation_change_tracking_hosts_change.png "The file changes are displayed.")
