@@ -96,6 +96,8 @@ DisableInternetExplorerESC
 
 EnableIEFileDownload
 
+PreventFirstRunPage
+
 InstallChocolaty
 
 InstallNotepadPP
