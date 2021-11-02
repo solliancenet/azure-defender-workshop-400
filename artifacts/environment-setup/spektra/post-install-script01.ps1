@@ -187,7 +187,7 @@ $serverName = $resourceName;
 $storageContainerName = "sqlimport";
 $databaseName = "Insurance";
 
-WaitForResource $resourceGroupName $resourceName "Microsoft.Storage/storageAccounts " 2500;
+WaitForResource $resourceGroupName $resourceName "Microsoft.Storage/storageAccounts " 1500;
 
 $storageKey = $(Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName).Value[0];
 $context = $(New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageKey);
@@ -203,7 +203,7 @@ New-AzRmStorageShare -ResourceGroupName $resourceGroupName -StorageAccountName $
 
 $user = Get-AzADUser -UserPrincipalName $userName;
 
-WaitForResource $resourceGroupName $resourceName "Microsoft.Sql/servers" 2500;
+WaitForResource $resourceGroupName $resourceName "Microsoft.Sql/servers" 1500;
 
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -ServerName $serverName -DisplayName $user.DisplayName -ObjectId $user.Id;
 
