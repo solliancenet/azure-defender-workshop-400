@@ -1,4 +1,4 @@
-# Azure Defender Setup : Lab 2 : Execute Azure Defender Protections
+# Microsoft Defender for Cloud Setup : Lab 2 : Execute Microsoft Defender for Cloud Protections
 
 ## Exercise 1: Container and Container Image Scanning
 
@@ -117,7 +117,7 @@
 
 31. Select **Apply rule**
 
-## Exercise 2: Azure Defender for Storage (Detecting bad actors)
+## Exercise 2: Microsoft Defender for Cloud for Storage (Detecting bad actors)
 
 ### Task 1: Detecting Bad Actors
 
@@ -138,7 +138,7 @@
 
     ![Security Alert.](./media/security_alert_malware_tor.png "Security Alert")
 
-## Exercise 3: Azure Defender for Storage (Detecting malware)
+## Exercise 3: Microsoft Defender for Cloud for Storage (Detecting malware)
 
 ### Task 1: Setup Logic App
 

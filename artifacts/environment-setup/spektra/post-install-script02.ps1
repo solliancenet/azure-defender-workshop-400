@@ -150,9 +150,9 @@ $wclient.DownloadFile($url, $output)
 
 #download the git repo...
 Write-Host "Download Git repo." -ForegroundColor Green -Verbose
-git clone https://github.com/solliancenet/security-defender-workshop-400.git synapse-ws-L400
+git clone https://github.com/solliancenet/azure-defender-workshop-400.git synapse-ws-L400
 
-cd './synapse-ws-L400/artifacts/environment-setup/automation'
+cd './azure-defender-workshop-400/artifacts/environment-setup/automation'
 
 sleep 20;
 

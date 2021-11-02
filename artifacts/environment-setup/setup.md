@@ -23,7 +23,7 @@
   
   > **NOTE** You should ensure that you delete the deployment so your password is not exposed in the subscription.  This step is required as sub-scripts are executed as the azure user.  These labs were originally intended to run in a controlled environment with lab users and passwords.
 
-  > **NOTE** Accounts with MFA enabled will not work. You should create a separate account for running the ARM template.  The account will need to be an owner of the Azure subscription to enable the Azure Defender components.
+  > **NOTE** Accounts with MFA enabled will not work. You should create a separate account for running the ARM template.  The account will need to be an owner of the Azure subscription to enable the Microsoft Defender for Cloud components.
 
   - **Odl Id** : `12345`
   - **Deployment Id** `12345`

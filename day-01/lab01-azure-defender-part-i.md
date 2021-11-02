@@ -1,4 +1,4 @@
-# Azure Defender Setup : Lab 1 : Setup
+# Microsoft Defender for Cloud Setup : Lab 1 : Setup
 
 ## Exercise 1: Log Analytics Solutions with Azure Security Center
 
@@ -68,7 +68,7 @@ Synopsis: Azure Security Center provides several advanced security and threat de
 
    ![The displayed of connected linux computers for the workspace.](./media/loganalytics-linux-computers.png "Review the linux computers connected to workspace")
 
-   > **Note** In most cases, Azure Security Center will assign resources automatically to a default or pre-configured log analytics workspace in your resource group.
+   > **Note** When auto-provisioning has been enabled, Azure Security Center will assign resources automatically to a default or pre-configured log analytics workspace in your resource group.
 
 ### Task 3: Enable change tracking and update management
 
@@ -81,7 +81,7 @@ Synopsis: Azure Security Center provides several advanced security and threat de
 
 5. Select the **CUSTOM** radio button.
 6. Select **change**, select matching region
-7. Select the **Log Analytics Workspace** that was deployed with the lab ARM template.
+7. Select the Log Analytics Workspace **wssecuritySUFFIX** that was deployed with the lab ARM template.
 
     ![The change tracking blade is displayed with custom and change link highlighted.](./media/virtual-machines-svcs-changetracking-config.png "Select CUSTOM and then select change links")
 
@@ -150,15 +150,15 @@ Duration: 5 minutes
 
 Duration: 15 minutes
 
-### Task 1: Azure Defender Plans
+### Task 1: Microsoft Defender for Cloud Plans
 
 1. In a browser, navigate to the Azure portal (<https://portal.azure.com>).
 2. Search for and open **Security Center**
 3. Under **Management**, select **Pricing & Settings**
 4. Select the lab subscription
-5. On the Azure Defender Plans, click **Enable all** then select **Save**
+5. On the Microsoft Defender for Cloud Plans, click **Enable all** then select **Save**
 6. Select the **wssecuritySUFFIX** log analytics resource
-7. On the Azure Defender Plans, select **Azure Defender On**
+7. On the Microsoft Defender for Cloud Plans, select **Azure Defender On**
 8. Select **Save**
 9. Under **Settings**, select **Data collection**
 10. Select **Common**

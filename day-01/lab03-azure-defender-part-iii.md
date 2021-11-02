@@ -1,4 +1,4 @@
-# Azure Defender Setup : Lab 3 : Execute Azure Defender Protections
+# Microsoft Defender for Cloud Setup : Lab 3 : Execute Microsoft Defender for Cloud Protections
 
 ## Exercise 1: Adaptive Application Controls
 

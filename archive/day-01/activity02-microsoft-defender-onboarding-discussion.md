@@ -1,8 +1,8 @@
-# Activity 02: Azure Defender Onboarding
+# Activity 02: Microsoft Defender for Cloud Onboarding
 
 ## Audience Poll 1
 
-Q: Which of the following cannot be `out of the box` monitored by Azure Defender?
+Q: Which of the following cannot be `out of the box` monitored by Microsoft Defender for Cloud?
 
 A) Azure App Service
 
@@ -14,7 +14,7 @@ D) Azure Storage
 
 ## Audience Poll 2
 
-Q: What are valid ways to onboard a virtual machine to Azure Defender?
+Q: What are valid ways to onboard a virtual machine to Microsoft Defender for Cloud?
 
 A) Manual install
 
@@ -26,7 +26,7 @@ D) All of the above
 
 ## Audience Poll 3
 
-Q: TRUE/FALSE: Azure Defender includes Microsoft Defender for EndPoint.
+Q: TRUE/FALSE: Microsoft Defender for Cloud includes Microsoft Defender for EndPoint.
 
 A) True
 
@@ -34,7 +34,7 @@ B) False
 
 ## Audience Poll 4
 
-Q: What license is required to use Azure Defender?
+Q: What license is required to use Microsoft Defender for Cloud?
 
 A) Windows 10 Enterprise E5
 
@@ -46,7 +46,7 @@ D) None of the above
 
 ## Audience Poll 5
 
-Q: TRUE/FALSE: Azure Defender logs are stored and visible in the customer's Azure Subscription?
+Q: TRUE/FALSE: Microsoft Defender for Cloud logs are stored and visible in the customer's Azure Subscription?
 
 A) FALSE
 
@@ -54,7 +54,7 @@ B) TRUE
 
 ## Audience Poll 6
 
-Q: Which of the following operating systems does not support Azure Defender?
+Q: Which of the following operating systems does not support Microsoft Defender for Cloud?
 
 A) macOS 10.13 (High Sierra)
 

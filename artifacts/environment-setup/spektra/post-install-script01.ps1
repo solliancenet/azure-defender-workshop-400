@@ -84,6 +84,7 @@ mkdir "c:\labfiles" -ea SilentlyContinue;
 $WebClient = New-Object System.Net.WebClient;
 $WebClient.DownloadFile("https://raw.githubusercontent.com/solliancenet/common-workshop/main/scripts/common.ps1","C:\LabFiles\common.ps1")
 $WebClient.DownloadFile("https://raw.githubusercontent.com/solliancenet/common-workshop/main/scripts/httphelper.ps1","C:\LabFiles\httphelper.ps1")
+$WebClient.DownloadFile("https://raw.githubusercontent.com/solliancenet/common-workshop/main/scripts/rundeployment.ps1","C:\LabFiles\rundeployment.ps1")
 
 #run the solliance package
 . C:\LabFiles\Common.ps1
@@ -161,9 +162,13 @@ $content = $content | ForEach-Object {$_ -Replace "GET-REGION", "$($rg.location)
 $content = $content | ForEach-Object {$_ -Replace "ARTIFACTS-LOCATION", "https://raw.githubusercontent.com/$repoUrl/$branch/artifacts/environment-setup/automation/"};
 $content | Set-Content -Path "$($parametersFile).json";
 
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
-  -TemplateFile $templatesFile `
-  -TemplateParameterFile "$($parametersFile).json"
+Write-Host "Executing main ARM deployment" -ForegroundColor Green -Verbose
+
+#OLD WAY...
+#New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templatesFile -TemplateParameterFile "$($parametersFile).json";
+
+#will fire deployment async so the main deployment shows "succeeded"
+ExecuteDeployment $templatesFile "$($parametersFile).json" $resourceGroupName;
  
 cd './azure-defender-workshop-400/artifacts/environment-setup/automation'
 
@@ -180,6 +185,8 @@ $serverName = $resourceName;
 $storageContainerName = "sqlimport";
 $databaseName = "Insurance";
 
+WaitForResource $resourceGroupName $resourceName "Microsoft.Storage/storageAccounts " 1000;
+
 $storageKey = $(Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName).Value[0];
 $context = $(New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageKey);
 
@@ -194,10 +201,14 @@ New-AzRmStorageShare -ResourceGroupName $resourceGroupName -StorageAccountName $
 
 $user = Get-AzADUser -UserPrincipalName $userName;
 
+WaitForResource $resourceGroupName $resourceName "Microsoft.Sql/servers" 1000;
+
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -ServerName $serverName -DisplayName $user.DisplayName -ObjectId $user.Id;
 
 #allow azure
 $serverFirewallRule = New-AzSqlServerFirewallRule -ResourceGroupName $resourceGroupName -ServerName $serverName -AllowAllAzureIPs
+
+#WaitForResource $resourceGroupName $resourceName "Microsoft.Sql/databases" 1000;
 
 #deploy the bacpac file...
 $importRequest = New-AzSqlDatabaseImport -ResourceGroupName $resourceGroupName `
@@ -214,8 +225,6 @@ $importRequest = New-AzSqlDatabaseImport -ResourceGroupName $resourceGroupName `
 
 #execute setup scripts
 Write-Host "Executing post scripts." -ForegroundColor Green -Verbose
-#./01-environment-setup.ps1
-#./03-environment-validate.ps1
 
 sleep 20
 

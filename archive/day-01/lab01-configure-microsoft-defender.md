@@ -270,7 +270,7 @@ Now that you have an `on-premises` environment, you can provision Microsoft Defe
 
     ![MDE Windows service is started](./media/mde_windows_service.png "MDE Windows service is started")
 
-## Exercise 4: Azure Defender / Log Analytics / Sentinel
+## Exercise 4: Microsoft Defender for Cloud / Log Analytics / Sentinel
 
 When connecting devices through the Microsoft Defender for EndPoint Portal, you will see the Log Analytics workspace used is one specifically for the portal and will not show up in the Azure Portal.  If you want to gain access to other integrations, you will need to connect the MMA agent to the Log Analytics workspace in your Azure Portal.
 

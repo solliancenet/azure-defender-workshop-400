@@ -1,6 +1,6 @@
-# Activity 03: Azure Defender for Azure Services
+# Activity 03: Microsoft Defender for Cloud for Azure Services
 
-Wide World Importers is planning to move to a micro-services architecture for many of its internal services and external applications. They have been using Azure Defender for their virtual machines, but would like to know how they can protect these PaaS based services during their transition.
+Wide World Importers is planning to move to a micro-services architecture for many of its internal services and external applications. They have been using Microsoft Defender for Cloud for their virtual machines, but would like to know how they can protect these PaaS based services during their transition.
 
 **Requirements**
 
@@ -23,5 +23,5 @@ Open your whiteboard for the event, and in the area for Activity 3 provide your 
 Challenges
 
 1. What can WWI do to protect their micro-services environments?
-2. WWI is concerned about container images and the possibility of malware or supply chain attacks, how can Azure Defender help?
-3. How can they use Azure Defender to protect their Azure App Services and Database management systems?
+2. WWI is concerned about container images and the possibility of malware or supply chain attacks, how can Microsoft Defender for Cloud help?
+3. How can they use Microsoft Defender for Cloud to protect their Azure App Services and Database management systems?

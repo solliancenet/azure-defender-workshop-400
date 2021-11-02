@@ -1,4 +1,4 @@
-# Azure Defender Setup : Lab 2 : Execute Azure Defender Protections
+# Microsoft Defender for Cloud Setup : Lab 2 : Execute Microsoft Defender for Cloud Protections
 
 ## Exercise 1: VM Vulnerability Assessments
 

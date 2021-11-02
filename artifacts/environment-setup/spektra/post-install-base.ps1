@@ -134,6 +134,8 @@ $content = $content | ForEach-Object {$_ -Replace "GET-REGION", "$($rg.location)
 $content = $content | ForEach-Object {$_ -Replace "ARTIFACTS-LOCATION", "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400"};
 $content | Set-Content -Path "$($parametersFile).json";
 
+Write-Host "Executing main ARM deployment" -ForegroundColor Green -Verbose
+
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -TemplateUri "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/master/artifacts/environment-setup/automation/00-core.json" `
   -TemplateParameterFile "$($parametersFile).json"

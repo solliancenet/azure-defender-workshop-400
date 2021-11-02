@@ -1,6 +1,6 @@
-# Activity 01: Azure Defender Onboarding
+# Activity 01: Microsoft Defender for Cloud Onboarding
 
-Wide World Importers would like to deploy Azure Defender to their entire on-premises and Azure infrastructure.
+Wide World Importers would like to deploy Microsoft Defender for Cloud to their entire on-premises and Azure infrastructure.
 
 **Requirements**
 
@@ -23,6 +23,6 @@ Open your whiteboard for the event, and in the area for Activity 1 provide your 
 
 Challenges
 
-1. What is the best way to deploy Azure Defender for Azure?
-2. What is the best way to deploy Azure Defender for On-Premises?
+1. What is the best way to deploy Microsoft Defender for Cloud for Azure?
+2. What is the best way to deploy Microsoft Defender for Cloud for On-Premises?
 3. How can they integrate all the logging into one place?

@@ -1,4 +1,4 @@
-# Azure Defender Setup : Lab 6 : Clearing Recommendations
+# Microsoft Defender for Cloud Setup : Lab 6 : Clearing Recommendations
 
 ## Exercise 1: Clearing Recommendations
 

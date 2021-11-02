@@ -14,14 +14,14 @@ Event [preflight checklist](artifacts/environment-setup/README.md).
         </tr>
         <tr>
             <td>&nbsp;</td>
-            <td colspan=2>Azure Defender</td>
-            <td colspan=2>Azure Defender</td>
+            <td colspan=2>Microsoft Defender for Cloud</td>
+            <td colspan=2>Microsoft Defender for Cloud</td>
         </tr>
         <tr>
             <td>08:00</td>
-            <td rowspan=2>Keynote: Welcome, Objectives, Azure Defender</td>
+            <td rowspan=2>Keynote: Welcome, Objectives, Microsoft Defender for Cloud</td>
             <td rowspan=11>Main</td>
-            <td rowspan=4>Design Presentation: Azure Defender - Part III</td>
+            <td rowspan=4>Design Presentation: Microsoft Defender for Cloud - Part III</td>
             <td rowspan=8>Main</td>
         </tr>
         <tr>
@@ -29,7 +29,7 @@ Event [preflight checklist](artifacts/environment-setup/README.md).
         </tr>
         <tr>
             <td>08:30</td>
-            <td rowspan=1>Demo Walkthrough - Azure Defender</td>
+            <td rowspan=1>Demo Walkthrough - Microsoft Defender for Cloud</td>
         </tr>
         <tr>
             <td>08:45</td>
@@ -37,7 +37,7 @@ Event [preflight checklist](artifacts/environment-setup/README.md).
         </tr>
         <tr>
             <td>09:00</td>
-            <td rowspan=3>Design Presentation: Azure Defender vs other Azure Products</td>
+            <td rowspan=3>Design Presentation: Microsoft Defender for Cloud vs other Azure Products</td>
         </tr>
         <tr>
             <td>09:15</td>
@@ -45,27 +45,27 @@ Event [preflight checklist](artifacts/environment-setup/README.md).
         </tr>
         <tr>
             <td>09:30</td>
-            <td rowspan=2>Design Presentation:Azure Defender - Part IV</td>
+            <td rowspan=2>Design Presentation:Microsoft Defender for Cloud - Part IV</td>
         </tr>
         <tr>
             <td>09:45</td>
         </tr>
         <tr>
             <td>10:00</td>
-            <td rowspan=3>Design Presentation: Azure Defender - Part I</td>
+            <td rowspan=3>Design Presentation: Microsoft Defender for Cloud - Part I</td>
         </tr>
         <tr>
             <td>10:15</td>
-            <td rowspan=1><a href="./day-02/activity03-azure-defender.md">Q&A / Digital Cohort Activity: Azure Defender (PaaS)</a></td>
+            <td rowspan=1><a href="./day-02/activity03-azure-defender.md">Q&A / Digital Cohort Activity: Microsoft Defender for Cloud (PaaS)</a></td>
             <td rowspan=5>Table</td>
         </tr>
         <tr>
             <td>10:30</td>
-            <td rowspan=4><a href="./day-02/lab05-azure-defender-part-iiii.md">Hands-on: Azure Defender Part IIII</a>
+            <td rowspan=4><a href="./day-02/lab05-azure-defender-part-iiii.md">Hands-on: Microsoft Defender for Cloud Part IIII</a>
         </tr>
         <tr>
             <td>10:45</td>
-            <td rowspan=4><a href="./day-01/lab01-azure-defender-part-i.md">Hands-on: Azure Defender Settings + Part I (***)</a></td>
+            <td rowspan=4><a href="./day-01/lab01-azure-defender-part-i.md">Hands-on: Microsoft Defender for Cloud Settings + Part I (***)</a></td>
             <td rowspan=8>Table</td>
         </tr>
         <tr>
@@ -98,7 +98,7 @@ Event [preflight checklist](artifacts/environment-setup/README.md).
             <td>12:45</td></tr>
         <tr>
             <td>13:00</td>
-            <td rowspan=4>Design Presentation: Azure Defender Part II(*)</td>
+            <td rowspan=4>Design Presentation: Microsoft Defender for Cloud Part II(*)</td>
             <td rowspan=6>Main</td>
         </tr>
         <tr>
@@ -112,7 +112,7 @@ Event [preflight checklist](artifacts/environment-setup/README.md).
         </tr>
         <tr>
             <td>14:00</td>
-            <td rowspan=2><a href="./day-01/activity01-azure-defender-onboarding.md">Q&A / Digital Cohort Activity: Azure Defender Onboarding (**)</a></td>
+            <td rowspan=2><a href="./day-01/activity01-azure-defender-onboarding.md">Q&A / Digital Cohort Activity: Microsoft Defender for Cloud Onboarding (**)</a></td>
         </tr>
         <tr>
             <td>14:15</td>
@@ -120,7 +120,7 @@ Event [preflight checklist](artifacts/environment-setup/README.md).
         </tr>
         <tr>
             <td>14:30</td>
-            <td rowspan=4><a href="./day-01/lab01-azure-defender-part-ii.md">Hands-on: Azure Defender Part II (***)</a></td>
+            <td rowspan=4><a href="./day-01/lab01-azure-defender-part-ii.md">Hands-on: Microsoft Defender for Cloud Part II (***)</a></td>
             <td rowspan=4>Table</td>
             <td rowspan=2>Design Presentation: Preparing for the worse / BCDR</td>
         </tr>
