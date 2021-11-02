@@ -113,6 +113,8 @@ InstallTor
 
 InstallPowerBI
 
+EnableDarkMode
+
 Uninstall-AzureRm -ea SilentlyContinue
 
 CreateLabFilesDirectory

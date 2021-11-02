@@ -114,6 +114,8 @@ InstallAzureCli
 
 InstallTor
 
+EnableDarkMode
+
 Uninstall-AzureRm -ea SilentlyContinue
 
 CreateLabFilesDirectory

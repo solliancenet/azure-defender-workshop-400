@@ -92,6 +92,8 @@ Uninstall-AzureRm -ea SilentlyContinue
 
 CreateLabFilesDirectory
 
+EnableDarkMode
+
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
 
 cd "c:\labfiles";
