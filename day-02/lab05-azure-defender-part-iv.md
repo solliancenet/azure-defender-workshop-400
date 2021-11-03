@@ -8,6 +8,9 @@
 2. Open the Azure Portal to your lab environment
 3. Navigate to your lab resource group
 4. Select the **wssecuritySUFFIX** container registry
+
+    ![Select the container registry.](./media/container_registry.png "Select the container registry")
+
 5. Under **Services**, select **Repositories**, notice there are no images
 6. Under **Settings**, select **Access keys**
 7. Copy the username and password for later use
@@ -25,7 +28,7 @@
 
 12. When prompted, type `yes`, then enter the lab password
 
-13. In the new SSH session, run the following command. This will push an image to the container registry.
+13. In the new SSH session, run the following command. This will push several images to the Azure container registry.
 
     ```bash
     sudo apt-get update
@@ -52,7 +55,7 @@
 
     ```
 
-14. Push the image to your Azure Container Registry, replace the name, username and password:
+14. Push the image to your Azure Container Registry, be sure to replace the `acrName`, `username` and `password`:
 
     ```bash
     sudo docker login {acrName}.azurecr.io -u {username} -p {password}
@@ -87,15 +90,18 @@
 
 18. Browse to **Security Center**
 
-19. Under **Cloud Security**, select **Azure Defender**
+19. Under **Cloud Security**, select **Workload protections**
 
 20. Select **Container Image scanning**, you should see one or more recommendations displayed. Wait for their to be 4 images to be scanned.  This can take a few minutes.
 
     ![Containers with issues.](./media/container_registry_security_recommendations.png "Containers with issues")
 
-21. Once the findings are displayed, notice some have patches availabe.
-22. For the `azurebellhop` image `Debian Security Update for Open Secure Sockets Layer` recommendations, select the issue
+21. Once the findings are displayed, notice some have patches available.
+22. For the `azurebellhop` image `Debian Security Update for Open Secure Sockets Layer` recommendation, select the issue
 23. Review the links that help with remediation.  If you like, perform the remediation steps and then re-push the image to the container registry to resolve the image issue.
+
+    ![Container issues are displayed](./media/container_178486_issue.png "Containers with issues")
+
 24. For the `azurebellhop` image `GNU Bach Prviliedges Escalation...` recommendation, select it.  
 
     ![Container issues are displayed](./media/container_registry_gnubash_recommendation.png "Containers with issues")
@@ -126,10 +132,16 @@
 3. Under **Data storage**, select **Containers**
 4. Select **sqlimport** folder
 5. Right-click the **Insurance.bacpac** file, select **Generate SAS**
+
+    ![Generate SAS token](./media/storage_generate_sas.png "Generate SAS")
+
 6. Select **Generate SAS token and URL**
 7. Copy the `Blob SAS URL`
-8. Open the Tor Browser (you should see a link on your desktop)
-9. Select **Connect**
+
+    ![Copy SAS token](./media/storage_generate_sas_copy.png "Copy SAS")
+
+8. Open the Tor Browser (you should see a link on your paw-1 desktop).  If you do not, open a PowerShell window and run `choco install tor-browser --ignoredetectedreboot --force`
+9. Select **Connect**, it can take a few moments to connect
 10. Paste the `Blob SAS URL` that you previously copied, press **ENTER**
 11. Select **Download file**
 12. Select **Save File**, then select **Save**
@@ -142,27 +154,42 @@
 
 ### Task 1: Setup Logic App
 
-1. Switch to the Azure Portal
-2. Browse to the `Ask-Remove-MalwareBlob` logic app
+1. Switch to the Azure Portal, navigate to the lab resource group
+2. Select to the `Ask-Remove-MalwareBlob` logic app
+
+    ![Select the logic app.](./media/logicapp_select.png "Select the logic app.")
+
 3. Under **Development Tools**, select **API connections**
 4. Select the **wssecurity-asc** connection
+
+   ![Select the logic app connection.](./media/logicapp_connections.png "Select the logic app connection.")
+
 5. Select **Edit API Connection**
 6. If displayed, select **Authorize**, login using your lab credentials
 7. Select **Save**
 8. Select the **wssecurity-o365** connection
 9. Select **Edit API Connection**
 10. If displayed, select **Authorize**, login using your lab credentials
+
+    ![Authorize the connection.](./media/logicapp_connection_authorize.png "Authorize the connection.")
+
 11. Select **Save**
 12. Browse back to the logic app and select the **Overview** menu item
 13. In the top navigation, select **Edit**, review the logic app
 14. Exit the editor mode
 15. Under **Settings**, select **Identity**
 16. For the system assigned identity, select **Azure role assignments**
+
+    ![Assign permissions.](./media/logicapp_identity.png "Assign permissions.")
+
 17. Select **Add role assignment**
 18. For the scope, select **Storage**
 19. Select the lab subscription
 20. Select the **wssecuritySUFFIX** storage account
 21. Select the **Storage Blob Data Owner** role
+
+    ![Assign storage permissions.](./media/logicapp_identity_storage_owner.png "Assign storage permissions.")
+
 22. Select **Save**
 23. Select **Add role assignment**
 24. For the scope, select **Subscription**
@@ -172,24 +199,35 @@
 
 ### Task 2: Setup Automation Trigger
 
-1. Browse to Azure Security Center
+1. Browse to **Security Center**
 2. Under **Management**, select **Workflow automation**
 3. In the top navigation, select **Add workflow automation**
+
+    ![Add workflow automation.](./media/asc_workflow_automation.png "Add workflow automation")
+
 4. For the name, type `Ask-Remove-MalwareBlob`
 5. Select the ***-security** resource group
-6. For the **Select Security Center data types**, select **Threat detection alerts**
-7. For the alert name contains, type **Potential malware uploaded to a storage blob container**
+6. For the **Defender for Cloud data types**, select **Security alerts**
+7. For the `alert name contains`, type **Potential malware uploaded to a storage blob container**
 8. For the logic app, select `Ask-Remove-MalwareBlob`
+
+    ![Create workflow automation.](./media/asc_workflow_automation_create.png "Create workflow automation")
+
 9. Select **Create**
 
 ### Task 3: Upload malware
 
-1. Browse to the **wssecuritySUFFIX** storage account
-2. Under **Data storage**, select **Containers**
-3. Select the `sqlimport` container
-4. Select **Upload**
-5. Extract all the contents of the `/artifacts/day-01/eicarcom2.zip` zip file
-6. Upload the `/artifacts/day-01/eicar.exe` file to the storage account
+> Note that Microsoft Defender will attempt to block you on this lab task.  You will need to open Defender and allow the files and actions as you proceed.  This may happen multiple times depending on the path you take.
+
+1. On the **paw-1** virtual machine, extract all the contents of the `c:/labfiles/workshop/artifacts/day-02/eicarcom2.zip` zip file until you get to the .exe file.
+
+    > NOTE:  You can also find this file on the eicar site : https://www.eicar.org/?page_id=3950
+
+2. Browse to the **wssecuritySUFFIX** storage account
+3. Under **Data storage**, select **Containers**
+4. Select the `sqlimport` container
+5. Select **Upload**
+6. Upload the `/artifacts/day-02/eicar.exe` file to the storage account
 7. After a few hours, you should see a new security alert in Security Center
 
     ![Security Alert.](./media/security_alert_malware_storage.png "Security Alert")
@@ -207,13 +245,24 @@
 2. Select **Security Center**
 3. Under **Cloud Security**, select **Regulatory compliance**
 4. Select **Manage compliance policies**
+
+    ![Manage compliance.](./media/asc_regulatory_compliance.png "Manage compliance")
+
 5. Select your lab subscription
-6. Select Under **Industry and regulation standards**, select **Add more standards**
-7. For the **NIST SP 800-53 R4**, select **Add**
-8. Select **Review + create**
-9. Select **Create**
-10. You should now see the new policy displayed, browse back to the Security Center Regulatory compliance blade
-11. You should now see the tab for **NIST SP 800-53 R4** displayed
+6. Under **Settings**, select **Security policy**
+7. Select Under **Industry and regulation standards**, select **Add more standards**
+
+    ![Add compliance.](./media/asc_regulatory_compliance_add_more.png "Add compliance")
+
+8. For the **NIST SP 800-53 R4**, select **Add**
+
+    ![Add Nist compliance.](./media/asc_regulatory_compliance_add_nist.png "Add Nist compliance")
+
+9. Select **Review + create**
+10. Select **Create**
+11. You should now see the new policy displayed
+12. Browse back to the Security Center Regulatory compliance blade
+13. You should now see the tab for **NIST SP 800-53 R4** displayed
 
     ![The new compliance standard is displayed.](./media/regulatory_compliance_UKO.png "The new compliance standard is displayed")
 

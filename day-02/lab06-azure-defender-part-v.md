@@ -4,8 +4,11 @@
 
 ### Task 1: Clearing Recommendations
 
-1. Switch to Azure Security Center
+1. Switch to **Security Center**
 2. Under **General**, select **Recommendations**
+
+    ![Recommendations.](./media/recommendations_clear.png "Recommendations.")
+
 3. Review your **Secure Score**
   
     ![Your current secure score.](./media/asc_secure_score.png "Your current secure score")
@@ -16,4 +19,4 @@
 
 5. Resolve as many controls and recommendations as possible **without disabling them**
 
-6. Compare your scores to other workshop attendees.
+6. When instructed, compare your scores to other workshop attendees.  Good luck!

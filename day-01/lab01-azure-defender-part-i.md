@@ -226,6 +226,16 @@ Duration: 15 minutes
 
 8. Select **Save**
 
+### Task 4: Default Security Policy
+
+1. Select **Security Policy**
+2. For the **Security Center default policy**, select **Assign policy**
+
+    ![Assign Policy.](./media/asc_assign_policy.png "Assign Policy")
+
+3. Select **Review + create**
+4. Select **Create**
+
 ## Exercise 8: Creating Sample Alerts
 
 ### Task 1: Create sample alerts

@@ -6,25 +6,31 @@
 
 1. Switch to the Azure Portal.
 
-2. Search for Virtual Machines, then select it
+2. In the global search, search for **Virtual Machines**, then select it
 
-3. Select all virtual machines, then select **Services->Inventory**, ensure that all virtual machines are connected to the **wssecuritySUFFIX** workspace.  If not, do the following
-   1. Select the **CUSTOM...** radio button, then browse for your **wssecuritySUFFIX** log analytics workspace
-   2. Select **Enable**
+3. Select all virtual machines, then select **Services->Inventory**, ensure that all virtual machines are connected to the **wssecuritySUFFIX** workspace.  If not, do the following:
 
-4. Select all virtual machines, then select **Services->Update Management**, ensure that all virtual machines are connected to the **wssecuritySUFFIX** workspace.  If not, do the following
-   1. Select the **CUSTOM...** radio button, then browse for your **wssecuritySUFFIX** log analytics workspace
-   2. Select **Enable**
+   - Select the **CUSTOM...** radio button, then browse for your **wssecuritySUFFIX** log analytics workspace
 
-5. Search for and select **Security Center**.
+   - Select **Enable**
 
-6. In the blade menu, scroll to the **Cloud Security** section and select **Azure Defender**
+4. Select all virtual machines, then select **Services->Update Management**, ensure that all virtual machines are connected to the **wssecuritySUFFIX** workspace.  If not, do the following:
+
+   - Select the **CUSTOM...** radio button, then browse for your **wssecuritySUFFIX** log analytics workspace
+
+   - Select **Enable**
+
+5. In the global search, search for and select **Security Center**.
+
+6. In the blade menu, scroll to the **Cloud Security** section and select **Workload Protections**
 
 7. Scroll to the bottom of the page, select **Adaptive application control**.
 
 8. If prompted, select **Try Application Whitelisting**
-   1. If prompted, select your workspace, then click **Upgrade**
-   2. Select **Continue without installing agents**
+
+   - If prompted, select your workspace, then click **Upgrade**
+
+   - Select **Continue without installing agents**
 
 9. You will likely have several groups displayed, find the one that has your newly created lab VMs.
   
@@ -35,7 +41,9 @@
     ![The discovered applications are displayed.](./media/securitycenter-whitelistingrules.png "Notice the applications that were executed on the machine are displayed")
 
 11. Select **Audit**
+
 12. Select the **Configured** tab, you should see the group state will move to **Auditing**.
+
 13. After Security Center gathers enough data, eventually you will see alerts such as the following:
 
     ![Adaptive Application Control alert.](./media/security_alert_adaptive_application.png "Adaptive Application Control alert is displayed")
@@ -45,11 +53,25 @@
 ### Task 1: Just In Time Access
 
 1. In a browser, navigate to your Azure portal (<https://portal.azure.com>).
+
 2. Search for **Security Center**, select it
-3. Under **Cloud Security** select **Azure Defender**.
+
+3. Under **Cloud Security** select **Workload Protections**.
+
 4. Scroll to the bottom, select **Just-in-time VM Access**
-5. Select the **Configured** tab, and verify the lab VMs are displayed.  If not, select the **Not Configured** tab, and then check the checkbox to select the lab VMs, and then select the **Enable JIT on X VMs** link.
+
+5. Select the **Configured** tab, and verify the lab VMs are displayed.  If not, preform the following:
+
+   - Select the **Not Configured** tab
+     - If the VMs are displayed, then check the checkbox to select the lab VMs, and then select the **Enable JIT on X VMs** link, continue with the lab.
+     - If the VMs are not displayed, select the **Unsupported** tab, then select the **wssecuritySUFFIX-paw-1** virtual machine.
+     - Under **Settings**, select the **Connect**.
+     - In the notification section at the top, select **To Improve security, enable just-in-time on this VM.**
+
+        ![Enable JIT.](./media/jit_vm_enable.png "Enable JIT.")
+
 6. In the configuration window that opens, review the settings, then select **Save**.
+
 7. After a few minutes, you should see the virtual machines moved to the **Configured** tab.
 
 ### Task 2: Perform a JIT request

@@ -78,13 +78,27 @@
 
 17. Select **Save** again
 
-18. In the Azure Portal, open **Security Center**
+18. Navigate to the **wssecuritySUFFIX** Azure Database for SQL server.
 
-19. Under **Cloud Security**, select **Workload Protections**
+19. Under **Settings**, select **Databases**
 
-20. Scroll to the bottom, select **SQL Vulnerability Assessment**, after a few minutes, you should see all servers across the subscription displayed.
+20. Select the **Insurance** database
 
-IMAGE TODO
+21. Under **Security**, select **Microsoft Defender for Cloud**
+
+22. Select **View additional findings in Vulnerability Assessment**
+
+23. Select **Scan**
+
+    ![Select Scan.](./media/sql-vulnerability-scan.png "Select Scan")
+
+24. In the Azure Portal, open **Security Center**
+
+25. Under **Cloud Security**, select **Workload Protections**
+
+26. Scroll to the bottom, select **SQL Vulnerability Assessment**, after a few minutes, you should see all servers across the subscription displayed.
+
+    ![Scan results.](./media/sql-vulnerability-scan-results.png "Scan results")
 
 ## Exercise 3: File Integrity Monitoring
 
@@ -124,7 +138,7 @@ IMAGE TODO
     ![Add windows item.](./media/fileintegrity-windows.png "Add windows item")
 
 8. For the item name, type **HOSTS**.
-9. For the path, type **c:\windows\system32\drivers\etc\\\***.
+9. For the path, type **c:\windows\system32\drivers\etc\\\***
 10. For the path type, select **Folder**
 11. Toggle **Recursion** to **On**
 12. Toggle **Upload file content** to **True**
@@ -183,6 +197,8 @@ IMAGE TODO
 4. Select the **HOSTS** file, in the dialog, review the file changes
 
     ![The file changes are displayed.](./media/automation_change_tracking_hosts_change.png "The file changes are displayed.")
+
+    > **NOTE** It may take a few minutes for the changes to be displayed. You can continue on to the next set of labs and come back to check on the results later in the day.
 
 ## Reference Links
 
