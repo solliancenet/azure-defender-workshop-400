@@ -268,4 +268,6 @@
 
 ## Reference Links
 
-- TODO
+- [Microsoft Defender for container registries](https://docs.microsoft.com/en-us/azure/security-center/defender-for-container-registries-introduction)
+- [Introduction to Microsoft Defender for Storage](https://docs.microsoft.com/en-us/azure/security-center/defender-for-storage-introduction)
+- [Customize the set of standards in your regulatory compliance dashboard](https://docs.microsoft.com/en-us/azure/security-center/update-regulatory-compliance-packages)
