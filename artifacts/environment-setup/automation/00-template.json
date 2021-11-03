@@ -196,21 +196,6 @@
       }
   },
   {
-      "type": "Microsoft.EventHub/namespaces/networkRuleSets",
-      "apiVersion": "2021-06-01-preview",
-      "name": "[concat(variables('resourceName'), '/default')]",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-          "[resourceId('Microsoft.EventHub/namespaces', variables('resourceName'))]"
-      ],
-      "properties": {
-          "publicNetworkAccess": "Enabled",
-          "defaultAction": "Allow",
-          "virtualNetworkRules": [],
-          "ipRules": []
-      }
-  },
-  {
       "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
       "apiVersion": "2021-06-01-preview",
       "name": "[concat(variables('resourceName'), '/', variables('resourceName'), '/All')]",
@@ -227,17 +212,6 @@
           ]
       }
   },
-  {
-      "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
-      "apiVersion": "2021-06-01-preview",
-      "name": "[concat(variables('resourceName'), '/', variables('resourceName'), '/$Default')]",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('resourceName'), variables('resourceName'))]",
-        "[resourceId('Microsoft.EventHub/namespaces', variables('resourceName'))]"
-      ],
-      "properties": {}
-  }
     {
       "type": "Microsoft.Resources/tags",
       "apiVersion": "2021-04-01",
@@ -1438,6 +1412,23 @@
               "destinationAddressPrefix": "*",
               "destinationPortRange": "3389"
             }
+          },
+          {
+              "name": "Port_Any",
+              "properties": {
+                  "protocol": "*",
+                  "sourcePortRange": "*",
+                  "destinationPortRange": "*",
+                  "sourceAddressPrefix": "*",
+                  "destinationAddressPrefix": "*",
+                  "access": "Allow",
+                  "priority": 1010,
+                  "direction": "Inbound",
+                  "sourcePortRanges": [],
+                  "destinationPortRanges": [],
+                  "sourceAddressPrefixes": [],
+                  "destinationAddressPrefixes": []
+              }
           }
         ]
       },
