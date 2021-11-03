@@ -1396,6 +1396,54 @@
       }
     },
     {
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[concat(variables('resourceName'),'-paw-1-nsg')]",
+      "apiVersion": "2021-02-01",
+      "location": "[variables('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "RDP",
+            "properties": {
+              "priority": 1000,
+              "protocol": "Tcp",
+              "access": "Allow",
+              "direction": "Inbound",
+              "sourceAddressPrefix": "*",
+              "sourcePortRange": "*",
+              "destinationAddressPrefix": "*",
+              "destinationPortRange": "3389"
+            }
+          }
+        ]
+      },
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[concat(variables('resourceName'),'-dc-nsg')]",
+      "apiVersion": "2021-02-01",
+      "location": "[variables('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "RDP",
+            "properties": {
+              "priority": 1000,
+              "protocol": "Tcp",
+              "access": "Allow",
+              "direction": "Inbound",
+              "sourceAddressPrefix": "*",
+              "sourcePortRange": "*",
+              "destinationAddressPrefix": "*",
+              "destinationPortRange": "3389"
+            }
+          }
+        ]
+      },
+      "dependsOn": []
+    },
+    {
       "name": "[concat(variables('resourceName'),'-win10-pip')]",
       "type": "Microsoft.Network/publicIPAddresses",
       "apiVersion": "2021-02-01",
@@ -1425,30 +1473,6 @@
         "publicIPAddressVersion": "IPv4",
         "publicIPAllocationMethod": "Static"
       }
-    },
-    {
-      "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[concat(variables('resourceName'),'-paw-1-nsg')]",
-      "apiVersion": "2021-02-01",
-      "location": "[variables('location')]",
-      "properties": {
-        "securityRules": [
-          {
-            "name": "RDP",
-            "properties": {
-              "priority": 1000,
-              "protocol": "Tcp",
-              "access": "Allow",
-              "direction": "Inbound",
-              "sourceAddressPrefix": "*",
-              "sourcePortRange": "*",
-              "destinationAddressPrefix": "*",
-              "destinationPortRange": "3389"
-            }
-          }
-        ]
-      },
-      "dependsOn": []
     },
     {
       "name": "[variables('publicIPAddressName')]",
@@ -1526,7 +1550,8 @@
       "location": "[variables('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Network/VirtualNetworks', concat(variables('resourceName'),'-ad'))]",
-        "[resourceId('Microsoft.Network/loadbalancers', variables('adLBName'))]"
+        "[resourceId('Microsoft.Network/loadbalancers', variables('adLBName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', concat(variables('resourceName'), '-dc-nsg'))]"
       ],
       "properties": {
         "ipConfigurations": [
@@ -1545,6 +1570,9 @@
             }
           }
         ],
+        "networkSecurityGroup": {
+          "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', concat(variables('resourceName'), '-dc-nsg'))]"
+        },
         "dnsSettings": { "dnsServers": [] }
       }
     },
@@ -1555,7 +1583,8 @@
       "location": "[variables('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Network/virtualNetworks/', concat(variables('resourceName'),'-ad'))]",
-        "[resourceId('Microsoft.Network/loadBalancers', variables('adLBName'))]"
+        "[resourceId('Microsoft.Network/loadBalancers', variables('adLBName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', concat(variables('resourceName'), '-dc-nsg'))]"
       ],
       "properties": {
         "ipConfigurations": [
@@ -1574,6 +1603,9 @@
             }
           }
         ],
+        "networkSecurityGroup": {
+          "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', concat(variables('resourceName'), '-dc-nsg'))]"
+        },
         "dnsSettings": { "dnsServers": [] }
       }
     },
