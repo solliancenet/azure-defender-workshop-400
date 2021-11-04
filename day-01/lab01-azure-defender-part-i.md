@@ -28,6 +28,16 @@ Synopsis: Azure Security Center provides several advanced security and threat de
       - Select **Upgrade**
       - Select **Continue without installing agents**
 
+6. Select **Overview**, if prompted, select the **You may be viewing limited information. To get tenant-wide visibility, click here**
+
+    ![Change visibility role.](./media/asc_setup_visiblity.png "Change visibility role")
+
+7. Select the **Security Admin** role
+
+    ![Change visibility role.](./media/asc_setup_tenant_access.png "Change visibility role")
+
+8. Select **Get access**
+
 ### Task 1: Linux VM and Microsoft Monitoring Agent (MMA) manual install
 
 1. In the Azure Portal, browse to your ***-SUFFIX-security** resource group, then select the **wssecuritySUFFIX** **Log Analytics Workspace**.

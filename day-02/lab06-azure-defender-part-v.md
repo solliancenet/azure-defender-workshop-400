@@ -19,4 +19,4 @@
 
 5. Resolve as many controls and recommendations as possible **without disabling them**
 
-6. When instructed, compare your scores to other workshop attendees.  Good luck!
+6. When instructed, compare your secure score to other workshop attendees. If the secure score is not updating, then compare the number of remaining recommendations by severity. Good luck!
