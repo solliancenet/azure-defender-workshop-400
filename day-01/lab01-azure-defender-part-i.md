@@ -170,39 +170,62 @@ Duration: 15 minutes
     ![Select Environment settings.](./media/asc_envrionment_settings.png "Select Environment settings")
 
 4. Under **Settings**, select **Defender plans**
-5. In the Microsoft Defender for Cloud Plans section, click **Enable all** then select **Save**
+5. On the Microsoft Defender for Cloud Plans, if not already selected, select **Enable all Microsoft Defender for Cloud plans**
+6. In the Microsoft Defender for Cloud Plans section, if any of the items are not enabled, click **Enable all** then select **Save**
 
     ![Enable Defender plans.](./media/asc_defender_cloud_plans_enable.png "Enable Defender plans")
 
-6. Select the **wssecuritySUFFIX** log analytics resource
-7. On the Microsoft Defender for Cloud Plans, select **Azure Defender On**
-8. Select **Save**
-9. Under **Settings**, select **Data collection**
-10. Select **Common**
+7. If prompted, select the **wssecuritySUFFIX** log analytics resource
+8. Under **Settings**, select **Security Policy**
+9. If you do not see a Security Center default policy assigned, then select **Assign policy**
+
+    ![Assign Policy.](./media/asc_assign_policy.png "Assign Policy")
+
+10. Select **Review + create**
+11. Select **Create**
+
+12. Navigate back to **Security Center**
+13. Under **Management**, select **Environment Settings**
+14. Expand the subscription node, select the **wssecuritySUFFIX** workspace
+15. Under **Settings**, select **Data collection**
+16. Select **Common**
 
     ![Enable logging.](./media/asc_log_analytics_data_collection.png "Enable logging")
 
-11. Select **Save**
+17. Select **Save**
 
 ### Task 2: Auto provisioning
 
 1. Under **Management**, select **Environment Settings**
 2. Select the lab subscription
-3. Under **Settings**, select **Auto provisioning**
+3. Under **Settings**, select **Auto provisioning**.  In a new subscription, you should see all the items are disabled:
+
+    ![All disabled.](./media/asc_provisioning_off.png "All disabled.")
+
 4. If disabled, toggle the **Log Analytics agent for Azure VMs** to **On**
-5. Toggle the **Log Analytics agent for Azure Arc Machines** to **On**
-6. In the dialog, select the **wssecuritySUFFIX** workspace
-7. Select **Apply**
-8. Toggle the **Vulnerability assessment for machines** to **On**
-9. In the dialog, select the **ASC integrated vulnerability scanner powered by Qualys** workspace
-10. Select **Apply**
+5. Select the **Connect Azure VMs to a different workspace**
+6. Select the **wssecuritySUFFIX** log analytics workspace
+
+    ![Setup provisioning.](./media/asc_setup_la_agent.png "Setup provisioning.")
+
+7. In the dialog, select **Existing and new VMs**
+
+    ![Select existing and new.](./media/asc_setup_new_existing_vms.png "Select existing and new.")
+
+8. Select **Apply**
+9. Toggle the **Log Analytics agent for Azure Arc Machines** to **On**
+10. In the dialog, select the **wssecuritySUFFIX** workspace
+11. Select **Apply**
+12. Toggle the **Vulnerability assessment for machines** to **On**
+13. In the dialog, select the **ASC integrated vulnerability scanner powered by Qualys** workspace
+14. Select **Apply**
 
     ![Select Qualys agent.](./media/asc_extension_vulnerability_assessment.png "Select Qualys agent")
 
-11. Toggle the **Guest Configuration agent** to **On**
-12. Toggle the **Microsoft Dependency agent** to **On**
-13. Toggle the **Policy Add-on for Kubernetes** to **On**
-14. Select **Save**
+15. Toggle the **Guest Configuration agent** to **On**
+16. Toggle the **Microsoft Dependency agent** to **On**
+17. Toggle the **Policy Add-on for Kubernetes** to **On**
+18. Select **Save**
 
     ![Review final settings](./media/asc_auto_provisioning_settings.png "Review final settings")
 
@@ -226,30 +249,22 @@ Duration: 15 minutes
 
 8. Select **Save**
 
-### Task 4: Default Security Policy
-
-1. Select **Security Policy**
-2. For the **Security Center default policy**, select **Assign policy**
-
-    ![Assign Policy.](./media/asc_assign_policy.png "Assign Policy")
-
-3. Select **Review + create**
-4. Select **Create**
-
 ## Exercise 8: Creating Sample Alerts
 
 ### Task 1: Create sample alerts
 
-1. Open the Azure Portal
-2. Browse to **Security Center**
-3. Under **General**, select **Security alerts**
+1. Browse back to **Security Center**
+2. Under **General**, select **Security alerts**
+3. In the top navigation, select **Sample alerts**
 
     ![Select Sample alerts.](./media/asc_sample_alerts.png "Select Sample alerts.")
 
-4. In the top navigation, select **Sample alerts**
-5. Select **Create sample alerts**, after a few minutes, you should see several security alerts generated:
+4. Select **Create sample alerts**, after a few minutes, you should see several security alerts generated:
 
     ![Sample alerts are displayed.](./media/security_center_sample_alerts.png "Sample alerts are displayed")
+
+5. Take a few minutes to review a couple of the sample alerts.
+6. Once done reviewing, select all the alerts and then select **Change status->Dismiss**
 
 ## Reference Links
 

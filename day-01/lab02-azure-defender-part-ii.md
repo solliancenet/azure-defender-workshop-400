@@ -16,17 +16,17 @@
 
     ![Select VM Vulnerability Assessments.](./media/asc_vm_vulnerability.png "Select VM Vulnerability Assessments")
 
-5. Select the checkbox to select all the virtual machines
+5. Under **Unhealthy resources**, select the checkbox to select all the virtual machines
 
     ![Select all VMs.](./media/vm_vulnerability_vms.png "Select all VMs")
 
 6. Select **Fix**
+7. Select the **Deploy the integrated vulnerability scanner powered by Qualys** option
 
     ![Select the Qualsys agent.](./media/vm_vulnerability_agent.png "Select the Qualsys agent")
 
-7. Select **Proceed**
-
-8. In the dialog, select **Fix 6 resources**
+8. Select **Proceed**
+9. In the dialog, select **Fix 6 resources**
 
   > **Note** After a few hours (up to 12), the agent will be installed on all selected machines and the assessment data will start to flow into the Security Center.
 
@@ -34,7 +34,7 @@
 
 ### Task 1: SQL Vulnerability
 
-1. Switch to the Azure Portal and browse to your resource group
+1. Switch to the Azure Portal and browse to the **-security** resource group
 
 2. Browse to the **wssecuritySUFFIX** Azure Database for SQL instance
 
@@ -62,41 +62,49 @@
 
 10. Toggle the **Enable Azure SQL Auditing** to **On**
 
-11. Select **Log Analytics** checkbox
+11. Select **Storage** checkbox
 
 12. Select the **wssecuritySUFFIX** log analytics workspace
 
-13. Toggle the **Enable Auditing of Microsoft support operations** to **On**
+13. Select **Log Analytics** checkbox
+
+14. Select the **wssecuritySUFFIX** log analytics workspace
 
     ![Configure auditing.](./media/sql_vulnerability_storage_auditing_config.png "Configure auditing")
 
-14. Again, select the **Log Analytics** checkbox, then select the lab subscription and the **wssecuritySUFFIX** workspace
+15. Toggle the **Enable Auditing of Microsoft support operations** to **On**
 
-15. Select **Save**
+16. Again, select the **Log Analytics** checkbox, then select the lab subscription and the **wssecuritySUFFIX** workspace
 
-16. In the breadcrumb, select **Server settings**
+17. Select **Save**
 
-17. Select **Save** again
+18. In the breadcrumb, select **Server settings**
 
-18. Navigate to the **wssecuritySUFFIX** Azure Database for SQL server.
+    ![Select Server settings.](./media/sql_breadcrumb.png "Select Server settings")
 
-19. Under **Settings**, select **Databases**
+19. Select **Save** again
 
-20. Select the **Insurance** database
+20. Navigate to the **wssecuritySUFFIX** Azure Database for SQL server.
 
-21. Under **Security**, select **Microsoft Defender for Cloud**
+21. Under **Settings**, select **SQL Databases**
 
-22. Select **View additional findings in Vulnerability Assessment**
+22. Select the **Insurance** database
 
-23. Select **Scan**
+23. Under **Security**, select **Microsoft Defender for Cloud**
+
+24. Select **View additional findings in Vulnerability Assessment**
+
+    ![Select view findings.](./media/sql_view_findings.png "Select view findings")
+
+25. Select **Scan**
 
     ![Select Scan.](./media/sql-vulnerability-scan.png "Select Scan")
 
-24. In the Azure Portal, open **Security Center**
+26. In the Azure Portal, open **Security Center**
 
-25. Under **Cloud Security**, select **Workload Protections**
+27. Under **Cloud Security**, select **Workload Protections**
 
-26. Scroll to the bottom, select **SQL Vulnerability Assessment**, after a few minutes, you should see all servers across the subscription displayed.
+28. Scroll to the bottom, select **SQL Vulnerability Assessment**, after a few minutes, you should see all servers and database scan results across the subscription displayed.
 
     ![Scan results.](./media/sql-vulnerability-scan-results.png "Scan results")
 
@@ -110,64 +118,64 @@
 
 3. Scroll to the bottom and select **File Integrity Monitoring**.
 
-4. Select the **wssecuritySUFFIX** log workspace. If displayed, select **Upgrade Plan**
+4. Select the **wssecuritySUFFIX** log workspace. If **Upgrade Plan** is displayed, select **Upgrade Plan**
 
    ![Update the workspace.](./media/securitycenter-fileintegrity-upgrade.png "Upgrade the workspace")
 
-   1. Select **Try File Integrity Monitoring**.
+   - Select **Try File Integrity Monitoring**.
 
-   2. Select the workspace only, then select **Upgrade**.
+   - Select the workspace only, then select **Upgrade**.
 
-   3. Select the **Continue without installing agents** link.
+   - Select the **Continue without installing agents** link.
 
       ![The continue without installing agents link is highlighted.](./media/fileintegrity-enable.png "Select the continue without installing agents link")
 
-   4. If displayed, select **Enable**, then select **Enable File Integrity Monitoring**. If not displayed, simply select the workspace.
+5. If displayed, select **Enable**, then select **Enable File Integrity Monitoring**. If not displayed, simply select the workspace.
 
-      > **NOTE** This can take some time, but is typically within a few minutes
+   > **NOTE** This can take some time, but is typically within a few minutes
 
-   5. Refresh the File Integrity Monitoring page
+6. Refresh the File Integrity Monitoring page until you see the **settings** menu.
   
-5. In the menu, select **Settings**.
+7. In the menu, select **Settings**.
 
     ![The Settings link is highlighted.](./media/fileintegrity-settings.png "Select the settings link")
 
-6. Select the **Windows Files** tab.
-7. Select **+Add**.
+8. Select the **Windows Files** tab.
+9. Select **+Add**.
 
     ![Add windows item.](./media/fileintegrity-windows.png "Add windows item")
 
-8. For the item name, type **HOSTS**.
-9. For the path, type **c:\windows\system32\drivers\etc\\\***
-10. For the path type, select **Folder**
-11. Toggle **Recursion** to **On**
-12. Toggle **Upload file content** to **True**
-13. Select **Save**.
+10. For the item name, type **HOSTS**.
+11. For the path, type **c:\windows\system32\drivers\etc\\\***
+12. For the path type, select **Folder**
+13. Toggle **Recursion** to **On**
+14. Toggle **Upload file content** to **True**
+15. Select **Save**.
 
     ![The settings page is displayed with the links highlighted.](./media/fileintegrity-addentry.png "Add a new file integrity monitoring item")
 
-14. Select the **File Content** tab.
-15. Select **Link**, then select the **wssecuritySUFFIX** storage account tied to your lab.
+16. Select the **File Content** tab.
+17. Select **Link**, then select the **wssecuritySUFFIX** storage account tied to your lab.
 
     > **NOTE** It will take 15-30 minutes for Log Analytics and its management packs to execute on all your VMs. As you may not have that much time with this lab, screen shots are provided as to what results you will eventually get.
 
     ![The file content page is displayed with the links highlighted.](./media/fileintegrity-filecontent.png "Link a storage account for file changes")
 
-16. Select **Save**
-17. Switch to the Remote Desktop Connection to the **wssecuritySUFFIX-paw-1**.
-18. Open **Event Viewer**.
-19. Expand the **Applications and Services Logs**, then select **Operations Manager**.
-20. Right-click **Operations Manager**, select **Filter Current Log**.
-21. Wait for a new event with the event id of **5001** to be displayed.
-22. Open the **c:\windows\system32\drivers\etc\hosts** file.
-23. Add the following entry:
+18. Select **Save**
+19. Switch to the Remote Desktop Connection to the **wssecuritySUFFIX-paw-1**.
+20. Open **Event Viewer**.
+21. Expand the **Applications and Services Logs**, then select **Operations Manager**.
+22. Right-click **Operations Manager**, select **Filter Current Log**.
+23. Wait for a new event with the event id of **5001** to be displayed.
+24. Open the **c:\windows\system32\drivers\etc\hosts** file.
+25. Add the following entry:
 
     ```cmd
     10.0.0.6    linux-2
     ```
 
-24. Save the file.
-25. After about 15-30 minutes, the Log Analytics workspace will start to pickup changes to your files, registry settings and windows services.
+26. Save the file.
+27. After about 15-30 minutes, the Log Analytics workspace will start to pickup changes to your files, registry settings and windows services.
     - Switch to your **wssecuritySUFFIX** Log Analytics workspace
     - Under **General**, select **Logs**
     - Run the following query:
@@ -182,7 +190,7 @@
 
     ![The file changes are saved to the logs of the workspace.](./media/fileintegrity-logchanges.png "Review the file change logs for the paw-1 machine in the log analytics workspace")
 
-26. You will also start to see the file snapshots show up in the storage account.  Browse to the **wssecuritySUFFIX** storage, then select **changetrackingblob** container, then select the folder that matches the machine name:
+28. You will also start to see the file snapshots show up in the storage account.  Browse to the **wssecuritySUFFIX** storage, then select **changetrackingblob** container, then select the folder that matches the machine name:
 
     ![The file changes are displayed in the storage account.](./media/fileintegrity-snapshots.png "The file changes are displayed in the storage account")
 
