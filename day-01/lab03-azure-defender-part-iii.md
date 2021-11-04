@@ -66,7 +66,7 @@
 
 ## Exercise 2: Adaptive Application Controls
 
-Note that it takes some time for Adaptive Application Controls to become active on a newly created subscription and virtual machines.  You may not see the same results as in this lab, but screenshots are provided for reference.
+Note that it takes some time (24+ hours) for Adaptive Application Controls to become active on a newly created subscription and virtual machines.  You may not see the same results as in this lab, but screenshots are provided for reference.
 
 ### Task 1: Adaptive Application Controls
 
