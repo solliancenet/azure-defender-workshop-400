@@ -149,6 +149,7 @@ git clone https://github.com/solliancenet/azure-defender-workshop-400.git
 $rg = Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "*-security" };
 $resourceGroupName = $rg.ResourceGroupName
 $deploymentId =  (Get-AzResourceGroup -Name $resourceGroupName).Tags["DeploymentId"]
+$subscriptionId = (Get-AzContext).Subscription.Id
 
 $branch = "main";
 $workshopName = "azure-defender-workshop-400";
@@ -165,6 +166,11 @@ $content = $content | ForEach-Object {$_ -Replace "GET-DEPLOYMENT-ID", "$deploym
 $content = $content | ForEach-Object {$_ -Replace "GET-REGION", "$($rg.location)"};
 $content = $content | ForEach-Object {$_ -Replace "ARTIFACTS-LOCATION", "https://raw.githubusercontent.com/$repoUrl/$branch/artifacts/environment-setup/automation/"};
 $content | Set-Content -Path "$($parametersFile).json";
+
+Write-Host "Assiging Permissions"
+
+New-AzRoleAssignment -SignInName $username -RoleDefinitionName "Security Reader" -Scope "/subscriptions/$subscriptionId" -ErrorAction SilentlyContinue;
+New-AzRoleAssignment -SignInName $username -RoleDefinitionName "Security Admin" -Scope "/subscriptions/$subscriptionId" -ErrorAction SilentlyContinue;
 
 Write-Host "Executing main ARM deployment" -ForegroundColor Green -Verbose
 
