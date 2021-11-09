@@ -49,10 +49,10 @@ Event [preflight checklist](artifacts/environment-setup/README.md).
         </tr>
         <tr>
             <td>09:45</td>
+            <td rowspan=3>Design Presentation: Microsoft Defender for Cloud - Part I</td>
         </tr>
         <tr>
             <td>10:00</td>
-            <td rowspan=3>Design Presentation: Microsoft Defender for Cloud - Part I</td>
         </tr>
         <tr>
             <td>10:15</td>
@@ -61,15 +61,17 @@ Event [preflight checklist](artifacts/environment-setup/README.md).
         </tr>
         <tr>
             <td>10:30</td>
+            <td>Break</td>
             <td rowspan=4><a href="./day-02/lab05-azure-defender-part-iiii.md">Hands-on: Microsoft Defender for Cloud Part IIII</a>
         </tr>
         <tr>
             <td>10:45</td>
-            <td rowspan=4><a href="./day-01/lab01-azure-defender-part-i.md">Hands-on: Microsoft Defender for Cloud Settings + Part I (***)</a></td>
+            <td rowspan=1><a href="./day-01/lab01-azure-defender-part-i.md">Activity 1: Microsoft Defender Onboarding</a></td>
             <td rowspan=8>Table</td>
         </tr>
         <tr>
             <td>11:00</td>
+            <td rowspan=3><a href="./day-01/lab01-azure-defender-part-i.md">Hands-on: Microsoft Defender for Cloud Settings + Part I (***)</a></td>
         </tr>
         <tr>
             <td>11:15</td>
@@ -107,21 +109,21 @@ Event [preflight checklist](artifacts/environment-setup/README.md).
         <tr><td>13:30</td></tr>
         <tr>
             <td>13:45</td>
-            <td rowspan=2><a href="./day-02/activity04-attack-patterns.md">Q&A / Digital Cohort Activity: Attack Patterns</a></td>
+            <td rowspan=1>Break</td>
             <td rowspan=9>Table</td>
         </tr>
         <tr>
             <td>14:00</td>
             <td rowspan=2><a href="./day-01/activity01-azure-defender-onboarding.md">Q&A / Digital Cohort Activity: Microsoft Defender for Cloud Onboarding (**)</a></td>
+            <td rowspan=2><a href="./day-02/activity04-attack-patterns.md">Q&A / Digital Cohort Activity: Attack Patterns</a></td>
         </tr>
         <tr>
             <td>14:15</td>
-            <td rowspan=1>Break</td>
         </tr>
         <tr>
             <td>14:30</td>
-            <td rowspan=4><a href="./day-01/lab01-azure-defender-part-ii.md">Hands-on: Microsoft Defender for Cloud Part II (***)</a></td>
-            <td rowspan=4>Table</td>
+            <td rowspan=6><a href="./day-01/lab01-azure-defender-part-ii.md">Hands-on: Microsoft Defender for Cloud Part II (***)</a></td>
+            <td rowspan=5>Table</td>
             <td rowspan=2>Design Presentation: Preparing for the worse / BCDR</td>
         </tr>
         <tr>
@@ -136,8 +138,6 @@ Event [preflight checklist](artifacts/environment-setup/README.md).
         </tr>
         <tr>
             <td>15:30</td>
-            <td rowspan=3>Closing</td>
-            <td rowspan=4>Main</td>
             <td rowspan=2><a href="./day-02/lab04-restoring-systems.md">Hands-on: Clearing recommendations</a></td>
         </tr>
         <tr>
@@ -145,6 +145,8 @@ Event [preflight checklist](artifacts/environment-setup/README.md).
         </tr>
         <tr>
             <td>16:00</td>
+            <td rowspan=1>Closing</td>
+            <td rowspan=1>Main</td>
             <td rowspan=1>Closing</td>
             <td rowspan=1>Main</td>
         </tr>

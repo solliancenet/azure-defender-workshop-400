@@ -72,9 +72,9 @@ Synopsis: Azure Security Center provides several advanced security and threat de
 10. Switch back to the Azure Portal.
 11. In the blade menu, select **Agents Management** and then select **Linux Servers**, you should see **1 LINUX COMPUTER CONNECTED**.  You have successfully manually deployed the agent, however, deploying manually would be time consuming so we will explore how to setup auto-deployment for newly created resources in future exercises.
 
-   ![The displayed of connected linux computers for the workspace.](./media/loganalytics-linux-computers.png "Review the linux computers connected to workspace")
+    ![The displayed of connected linux computers for the workspace.](./media/loganalytics-linux-computers.png "Review the linux computers connected to workspace")
 
-   > **Note** When auto-provisioning has been enabled, Azure Security Center will assign resources automatically to a default or pre-configured log analytics workspace in your resource group.
+    > **Note** When auto-provisioning has been enabled, Azure Security Center will assign resources automatically to a default or pre-configured log analytics workspace in your resource group.
 
 ### Task 3: Enable change tracking and update management
 
