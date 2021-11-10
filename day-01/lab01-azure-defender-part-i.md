@@ -40,7 +40,7 @@ Synopsis: Microsoft Defender for Cloud provides several advanced security and th
 
 ### Task 1: Linux VM and Microsoft Monitoring Agent (MMA) manual install
 
-1. In the Azure Portal, browse to your ***-SUFFIX-security** resource group, then select the **wssecuritySUFFIX** **Log Analytics Workspace**.
+1. In the Azure Portal, browse to your ***-security** resource group, then select the **wssecuritySUFFIX** **Log Analytics Workspace**.
 
     ![The log analytics workspace is highlighted.](./media/LogAnalyticsWorkspace.png "Select the log analytics workspace")
 
@@ -50,14 +50,16 @@ Synopsis: Microsoft Defender for Cloud provides several advanced security and th
 
    ![Agents management blade link is highlighted along with the id and key for the workspace](./media/LogAnalyticsWorkspace_Settings.png "Copy the workspace id and key")
 
-4. In the Azure Portal, browse to the **wssecurity-SUFFIX-paw-1** virtual machine and select it
+4. In the Azure Portal, browse to the **wssecurity-SUFFIX-paw-1** virtual machine and select it.  Note that you may need to start the VMs if they have been stopped.
 5. Select **Connect->RDP**, then select **Download RDP File**.  Open the file to start an RDP connection.
 6. Login to the **wssecuritySUFFIX-paw-1** virtual machine using the `wsuser` username and the lab password.
-7. Open a Windows PowerShell window and run the following:
+7. Open a Windows PowerShell window and run the following to login to the **wssecurity-SUFFIX-linux-1** (you may need to verify the IP address of the linux-1 machine first):
 
     ```PowerShell
     ssh wsuser@10.0.0.5
     ```
+
+    > **NOTE** Make sure the IP is correct, sometimes the IPs can get allocated differently during ARM setup and VM restarts.
 
 8. In the prompt, type **yes**, login using the lab password.  
 9. Run the following commands, be sure to replace the workspace tokens with the values you records above:
