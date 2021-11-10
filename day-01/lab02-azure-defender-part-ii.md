@@ -16,6 +16,8 @@
 
     ![Select VM Vulnerability Assessments.](./media/asc_vm_vulnerability.png "Select VM Vulnerability Assessments")
 
+    > **NOTE** Auto-provisioning will kick in from Lab 1 and deploy the protection automatically.  Depending on how fast that process is, you may not see the following in your lab environment.
+
 5. Under **Unhealthy resources**, select the checkbox to select all the virtual machines
 
     ![Select all VMs.](./media/vm_vulnerability_vms.png "Select all VMs")
