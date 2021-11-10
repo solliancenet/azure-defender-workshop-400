@@ -52,6 +52,7 @@ A) FALSE
 
 B) TRUE
 
+<!--
 ## Audience Poll 6
 
 Q: Which of the following operating systems does not support Microsoft Defender for Cloud?
@@ -77,3 +78,5 @@ B) 250
 C) 500
 
 D) 1000
+
+-->
