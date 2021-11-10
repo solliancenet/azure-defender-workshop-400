@@ -140,6 +140,8 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 
 Connect-AzAccount -Credential $cred | Out-Null
 
+Register-AzResourceProvider -ProviderNamespace Microsoft.OperationsManagement
+
 #download the git repo...
 Write-Host "Download Git repo." -ForegroundColor Green -Verbose
 

@@ -86,7 +86,7 @@ Note that it takes some time (24+ hours) for Adaptive Application Controls to be
 
    - Select **Enable**
 
-5. In the global search, search for and select **Security Center**.
+5. In the global search, search for and select **Microsoft Defender for Cloud**.
 
 6. In the blade menu, scroll to the **Cloud Security** section and select **Workload Protections**
 
@@ -110,7 +110,7 @@ Note that it takes some time (24+ hours) for Adaptive Application Controls to be
 
 12. Select the **Configured** tab, you should see the group state will move to **Auditing**.
 
-13. After Security Center gathers enough data, eventually you will see alerts such as the following:
+13. After Microsoft Defender for Cloud gathers enough data, eventually you will see alerts such as the following:
 
     ![Adaptive Application Control alert.](./media/security_alert_adaptive_application.png "Adaptive Application Control alert is displayed")
 
