@@ -55,7 +55,7 @@ B) TRUE
 <!--
 ## Audience Poll 6
 
-Q: Which of the following operating systems does not support Microsoft Defender for Cloud?
+Q: Which of the following operating systems does not support Microsoft Defender for EndPoint?
 
 A) macOS 10.13 (High Sierra)
 
