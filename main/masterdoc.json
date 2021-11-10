@@ -8,11 +8,11 @@
           "Order": 1
         },
         {
-          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-01/activity02-azure-defender-onboarding-discussion.md",
+          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-01/lab01-azure-defender-part-i.md",
           "Order": 2
         },
         {
-          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-01/lab01-azure-defender-part-i.md",
+          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-01/activity02-azure-defender-onboarding-discussion.md",
           "Order": 3
         }     ,
         {
