@@ -76,6 +76,7 @@
     "rgName": "[resourceGroup().name]",
     "resourceName": "[concat('wssecurity',parameters('uniqueSuffix'))]",
     "automationMap": {
+      "eastus2": { "region": "East US" },
       "eastus": { "region": "East US 2" },
       "southcentralus": { "region": "South Central US" },
       "westcentralus": { "region": "West Cental US" },
