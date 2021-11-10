@@ -168,13 +168,15 @@
 20. Open **Event Viewer**.
 21. Expand the **Applications and Services Logs**, then select **Operations Manager**.
 22. Right-click **Operations Manager**, select **Filter Current Log**.
-23. Wait for a new event with the event id of **5001** to be displayed.
+23. Wait for a new event with the event id of **5002** to be displayed.
 24. Open the **c:\windows\system32\drivers\etc\hosts** file.
 25. Add the following entry:
 
     ```cmd
     10.0.0.6    linux-2
     ```
+
+    > **NOTE** It doesn't matter the machine name or IP here.  You simply need to make a change so that it will be picked up in Microsoft Defender for Cloud.
 
 26. Save the file.
 27. After about 15-30 minutes, the Log Analytics workspace will start to pickup changes to your files, registry settings and windows services.
