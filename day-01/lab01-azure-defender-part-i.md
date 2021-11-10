@@ -13,17 +13,19 @@ Synopsis: Microsoft Defender for Cloud provides several advanced security and th
 
     ![Search for Microsoft Defender for Cloud.](./media/asc_search.png "Search for Microsoft Defender for Cloud")
 
-3. If you are presented with the getting started page, select **Upgrade**, otherwise skip to Task 1.
+3. If you are presented with the getting started page, select both the subscription and the log analytics workspace, then select **Upgrade**, otherwise skip to Task 1.
 
     ![Upgrade Microsoft Defender for Cloud.](./media/securitycenter-upgrade.png "Upgrade Microsoft Defender for Cloud")
 
     > **NOTE** Due to the lab environment, your Microsoft Defender for Cloud may already be upgraded and this step may not be necessary.
 
+    > **NOTE** If you do not see the workspace, continue on and we will enable it in a later step.
+
 4. Select **Continue without installing agents**
 
     ![Skip agents.](./media/securitycenter-installagents.png "Skip agents")
 
-5. Under **General**, select **Security Alerts**, if prompted, select **Try Advanced threat detection**
+5. Under **General**, select **Security Alerts**, IF prompted, select **Try Advanced threat detection**
       - Select the **wssecuritySUFFIX** workspace
       - Select **Upgrade**
       - Select **Continue without installing agents**
@@ -199,12 +201,13 @@ Duration: 15 minutes
 12. Navigate back to **Microsoft Defender for Cloud**
 13. Under **Management**, select **Environment Settings**
 14. Expand the subscription node, select the **wssecuritySUFFIX** workspace
-15. Under **Settings**, select **Data collection**
-16. Select **Common**
+15. Under **Settings**, select the **Defender Plan**, if it is not selected, select **Enable all Microsoft Defender for Cloud Plans**, then select **Save**
+16. Under **Settings**, select **Data collection**
+17. Select **Common**
 
     ![Enable logging.](./media/asc_log_analytics_data_collection.png "Enable logging")
 
-17. Select **Save**
+18. Select **Save**
 
 ### Task 2: Auto provisioning
 
