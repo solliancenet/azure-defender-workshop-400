@@ -6,7 +6,7 @@
 
 1. Switch to the Azure Portal.
 
-2. In the global search for and select the **Security Center**
+2. In the global search for and select the **Microsoft Defender for Cloud**
 
 3. Under **Cloud Security**, select **Workload protections**
 
@@ -28,7 +28,7 @@
 8. Select **Proceed**
 9. In the dialog, select **Fix 6 resources**
 
-  > **Note** After a few hours (up to 12), the agent will be installed on all selected machines and the assessment data will start to flow into the Security Center.
+  > **Note** After a few hours (up to 12), the agent will be installed on all selected machines and the assessment data will start to flow into Microsoft Defender for Cloud.
 
 ## Exercise 2: SQL Vulnerability Assessments
 
@@ -100,7 +100,7 @@
 
     ![Select Scan.](./media/sql-vulnerability-scan.png "Select Scan")
 
-26. In the Azure Portal, open **Security Center**
+26. In the Azure Portal, open **Microsoft Defender for Cloud**
 
 27. Under **Cloud Security**, select **Workload Protections**
 
@@ -112,7 +112,7 @@
 
 ### Task 1: File Integrity Monitoring
 
-1. Navigate back to the Security Center
+1. Navigate back to **Microsoft Defender for Cloud**
 
 2. In the blade menu, under **Cloud Security**, select **Workload protections**
 

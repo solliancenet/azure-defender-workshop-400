@@ -6,7 +6,7 @@
 
 1. In a browser, navigate to your Azure portal (<https://portal.azure.com>).
 
-2. Search for **Security Center**, select it
+2. Search for **Microsoft Defender for Cloud**, select it
 
 3. Under **Cloud Security** select **Workload Protections**.
 
@@ -35,7 +35,7 @@
 
     ![Access approved.](./media/jit_access_approved.png "Access approved.")
 
-5. Switch to the Security Center
+5. Switch to the **Microsoft Defender for Cloud**
 6. Select **Workload protections**
 7. Select **Just in Time VM Access**
 8. You should see the **Approved** requests have been incremented and the **Last Access** is set to **Active now.**.

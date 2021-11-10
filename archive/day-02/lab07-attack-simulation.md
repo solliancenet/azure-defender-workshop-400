@@ -158,12 +158,12 @@ This exercise will show how a SSH bruteforce attack can be performed against a L
 
 6. Run the script, notice how it will execute several attempts to login via SSH to the **wssecuritySUFFIX-linux-1** machine using the plink tool from putty.
 
-7. After a few moments (up to 30 mins), you will see an alert from Security Center about a successful brute force attack.
+7. After a few moments (up to 30 mins), you will see an alert from Microsoft Defender for Cloud about a successful brute force attack.
 
-    - Navigate to Security Center
+    - Navigate to Microsoft Defender for Cloud
     - Select **Security Alerts**
 
-    ![The email warning about the Brute Force Attack.](./media/linux-brute-attack-warning.png "The Azure Security Center warning about brute force attack")
+    ![The email warning about the Brute Force Attack.](./media/linux-brute-attack-warning.png "The Microsoft Defender for Cloud warning about brute force attack")
 
 ### Task 2: Review Alerts
 

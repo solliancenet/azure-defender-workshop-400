@@ -4,13 +4,13 @@
 
 Customers have immense flexibility when choosing what resources they would like to protect and how they will protect them. As a Microsoft Security consultant, you should be familiar will all the Security Portals
 
-### Task 1: Azure Security Center
+### Task 1: Microsoft Defender for Cloud
 
 1. Open the Azure Portal
-2. Search for **Security Center**, select it
+2. Search for **Microsoft Defender for Cloud**, select it
 3. Review the portal
 
-    ![Azure Security Center Portal](./media/portal_azure_security_center.png "Azure Security Center Portal")
+    ![Microsoft Defender for Cloud Portal](./media/portal_azure_security_center.png "Microsoft Defender for Cloud Portal")
 
 ### Task 2: Azure Sentinel
 

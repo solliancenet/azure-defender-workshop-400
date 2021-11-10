@@ -1,23 +1,23 @@
 # Microsoft Defender for Cloud Setup : Lab 1 : Setup
 
-## Exercise 1: Log Analytics Solutions with Azure Security Center
+## Exercise 1: Log Analytics Solutions with Microsoft Defender for Cloud
 
 Duration: 60 minutes
 
-Synopsis: Azure Security Center provides several advanced security and threat detection abilities that are not enabled by default. In this exercise we will explore and enable several of them.
+Synopsis: Microsoft Defender for Cloud provides several advanced security and threat detection abilities that are not enabled by default. In this exercise we will explore and enable several of them.
 
-### Task 0: Setup Azure Security Center
+### Task 0: Setup Microsoft Defender for Cloud
 
 1. Open the [Azure Portal](https://portal.azure.com/#home)
-2. In the global search, search for **Security Center**, select it
+2. In the global search, search for **Microsoft Defender for Cloud**, select it
 
-    ![Search for Security Center.](./media/asc_search.png "Search for Security Center")
+    ![Search for Microsoft Defender for Cloud.](./media/asc_search.png "Search for Microsoft Defender for Cloud")
 
 3. If you are presented with the getting started page, select **Upgrade**, otherwise skip to Task 1.
 
-    ![Upgrade Security Center.](./media/securitycenter-upgrade.png "Upgrade Security Center")
+    ![Upgrade Microsoft Defender for Cloud.](./media/securitycenter-upgrade.png "Upgrade Microsoft Defender for Cloud")
 
-    > **NOTE** Due to the lab environment, your security center may already be upgraded and this step may not be necessary.
+    > **NOTE** Due to the lab environment, your Microsoft Defender for Cloud may already be upgraded and this step may not be necessary.
 
 4. Select **Continue without installing agents**
 
@@ -74,7 +74,7 @@ Synopsis: Azure Security Center provides several advanced security and threat de
 
     ![The displayed of connected linux computers for the workspace.](./media/loganalytics-linux-computers.png "Review the linux computers connected to workspace")
 
-    > **Note** When auto-provisioning has been enabled, Azure Security Center will assign resources automatically to a default or pre-configured log analytics workspace in your resource group.
+    > **Note** When auto-provisioning has been enabled, Microsoft Defender for Cloud will assign resources automatically to a default or pre-configured log analytics workspace in your resource group.
 
 ### Task 3: Enable change tracking and update management
 
@@ -167,13 +167,13 @@ Duration: 5 minutes
 
     ![Azure Activity logs connected to Log Analytics.](./media/loganalytics_azureactivitylogs_connected.png "Azure Activity logs connected to Log Analytics")
 
-## Exercise 3: Azure Security Center Settings
+## Exercise 3: Microsoft Defender for Cloud Settings
 
 Duration: 15 minutes
 
 ### Task 1: Microsoft Defender for Cloud Plans
 
-1. In the global navigation search for and select **Security Center**
+1. In the global navigation search for and select **Microsoft Defender for Cloudr**
 2. Under **Management**, select **Environment Settings**
 3. Select the lab subscription
 
@@ -187,14 +187,14 @@ Duration: 15 minutes
 
 7. If prompted, select the **wssecuritySUFFIX** log analytics resource
 8. Under **Settings**, select **Security Policy**
-9. If you do not see a Security Center default policy assigned, then select **Assign policy**
+9. If you do not see a Microsoft Defender for Cloud default policy assigned, then select **Assign policy**
 
     ![Assign Policy.](./media/asc_assign_policy.png "Assign Policy")
 
 10. Select **Review + create**
 11. Select **Create**
 
-12. Navigate back to **Security Center**
+12. Navigate back to **Microsoft Defender for Cloud**
 13. Under **Management**, select **Environment Settings**
 14. Expand the subscription node, select the **wssecuritySUFFIX** workspace
 15. Under **Settings**, select **Data collection**
@@ -263,7 +263,7 @@ Duration: 15 minutes
 
 ### Task 1: Create sample alerts
 
-1. Browse back to **Security Center**
+1. Browse back to **Microsoft Defender for Cloud**
 2. Under **General**, select **Security alerts**
 3. In the top navigation, select **Sample alerts**
 
@@ -278,6 +278,6 @@ Duration: 15 minutes
 
 ## Reference Links
 
-- [Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro)
+- [Microsoft Defender for Cloud](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro)
 - [Overview of Azure Monitor agents](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/agents-overview)
 - [Log Analytics](https://docs.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-overview)

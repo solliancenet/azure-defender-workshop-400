@@ -88,7 +88,7 @@
 
     ![Ensure security is enabled.](./media/container_registry_security_on.png "Ensure security is enabled")
 
-18. Browse to **Security Center**
+18. Browse to **Microsoft Defender for Cloudr**
 
 19. Under **Cloud Security**, select **Workload protections**
 
@@ -146,7 +146,7 @@
 11. Select **Download file**
 12. Select **Save File**, then select **Save**
 
-    > **Note** After an hour you will see an alert in Security Center
+    > **Note** After an hour you will see an alert in Microsoft Defender for Cloud
 
     ![Security Alert.](./media/security_alert_malware_tor.png "Security Alert")
 
@@ -199,7 +199,7 @@
 
 ### Task 2: Setup Automation Trigger
 
-1. Browse to **Security Center**
+1. Browse to **Microsoft Defender for Cloud**
 2. Under **Management**, select **Workflow automation**
 3. In the top navigation, select **Add workflow automation**
 
@@ -228,7 +228,7 @@
 4. Select the `sqlimport` container
 5. Select **Upload**
 6. Upload the `/artifacts/day-02/eicar.exe` file to the storage account
-7. After a few hours, you should see a new security alert in Security Center
+7. After a few hours, you should see a new security alert in Microsoft Defender for Cloud
 
     ![Security Alert.](./media/security_alert_malware_storage.png "Security Alert")
 
@@ -242,7 +242,7 @@
 ### Task 6: Add Industry and Regulatory standards
 
 1. Switch to the Azure Portal
-2. Select **Security Center**
+2. Select **Microsoft Defender for Cloud**
 3. Under **Cloud Security**, select **Regulatory compliance**
 4. Select **Manage compliance policies**
 
@@ -261,7 +261,7 @@
 9. Select **Review + create**
 10. Select **Create**
 11. You should now see the new policy displayed
-12. Browse back to the Security Center Regulatory compliance blade
+12. Browse back to the Microsoft Defender for Cloud Regulatory compliance blade
 13. You should now see the tab for **NIST SP 800-53 R4** displayed
 
     ![The new compliance standard is displayed.](./media/regulatory_compliance_UKO.png "The new compliance standard is displayed")

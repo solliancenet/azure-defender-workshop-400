@@ -4,7 +4,7 @@
 
 ### Task 1: Clearing Recommendations
 
-1. Switch to **Security Center**
+1. Switch to **Microsoft Defender for Cloud**
 2. Under **General**, select **Recommendations**
 
     ![Recommendations.](./media/recommendations_clear.png "Recommendations.")
