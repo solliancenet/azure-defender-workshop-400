@@ -136,7 +136,7 @@ Synopsis: Microsoft Defender for Cloud provides several advanced security and th
 
     ![The event viewer is displayed with the click path highlighted.](./media/eventviewer-operations-mgr.png "Filter the Operations Manager event logs")
 
-5. For the event id, type **5001**, select the latest entry, you should see similar names to all the solutions that are deployed in your Log Analytics workspace including the ones you just added:
+5. For the event id, type **5002**, select the latest entry, you should see similar names to all the solutions that are deployed in your Log Analytics workspace including the ones you just added:
 
     ![The event viewer is displayed with the click path highlighted.](./media/eventviewer-operations-mgr-5000.png "Filter the Operations Manager event logs")
 
