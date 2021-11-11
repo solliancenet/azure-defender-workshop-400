@@ -102,7 +102,7 @@ Note that it takes some time (24+ hours) for Adaptive Application Controls to be
   
     ![Machine groupings is displayed.](./media/securitycenter-grouping.png "Azure automatically created a group for your VMs")
 
-10. Expand the **More applications** section, you should see that Google Chrome and Notepad++ were picked up and have Microsoft Certificated tied to them
+10. Expand the **More applications** section, you should see that `Google Chrome` and `Notepad++` were picked up and have valid Microsoft Certificates tied to them:
   
     ![The discovered applications are displayed.](./media/securitycenter-whitelistingrules.png "Notice the applications that were executed on the machine are displayed")
 
