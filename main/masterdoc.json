@@ -35,17 +35,19 @@
         }
         ,
         {
-          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-02/activity04-attack-patterns.md",
+          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-02/lab05-azure-defender-part-iv.md",
+          
           "Order": 8
         }
         ,
         {
-            "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-02/activity05-restoring-systems.md",
+            "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-02/activity04-attack-patterns.md",
+
           "Order": 9
         }
         ,
         {
-            "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-02/lab05-azure-defender-part-iv.md",
+          "RawFilePath": "https://raw.githubusercontent.com/solliancenet/azure-defender-workshop-400/main/day-02/activity05-restoring-systems.md",
           "Order": 10
         }
         ,
