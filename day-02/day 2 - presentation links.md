@@ -113,3 +113,14 @@
 - STIX - https://oasis-open.github.io/cti-documentation/stix/intro.html
 - TAXII - https://oasis-open.github.io/cti-documentation/taxii/intro
 - Understand threat intelligence in Microsoft Sentinel - https://docs.microsoft.com/en-us/azure/sentinel/import-threat-intelligence
+- Connect Microsoft Sentinel to STIX/TAXII threat intelligence feeds - https://docs.microsoft.com/en-us/azure/sentinel/connect-threat-intelligence-taxii
+
+## Preparing for the Worst
+
+- Backup and restore plan to protect against ransomware - https://docs.microsoft.com/en-us/azure/security/fundamentals/backup-plan-to-protect-against-ransomware
+- Microsoft Safety Scanner - https://docs.microsoft.com/en-us/windows/security/threat-protection/intelligence/safety-scanner-download
+- Run and review the results of a Microsoft Defender Offline scan - https://docs.microsoft.com/en-us/microsoft-365/security/defender-endpoint/microsoft-defender-offline?view=o365-worldwide
+
+# Question...
+
+- Azure Backup / Recovery Services Vault - https://docs.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview
