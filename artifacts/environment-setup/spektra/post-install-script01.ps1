@@ -142,6 +142,9 @@ Connect-AzAccount -Credential $cred | Out-Null
 
 Register-AzResourceProvider -ProviderNamespace Microsoft.OperationsManagement
 
+#adding MS Defender exclude path...
+Add-MpPreference -ExclusionPath "C:\labfiles"
+
 #download the git repo...
 Write-Host "Download Git repo." -ForegroundColor Green -Verbose
 

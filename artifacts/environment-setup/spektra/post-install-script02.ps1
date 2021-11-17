@@ -152,6 +152,9 @@ $wclient.DownloadFile($url, $output)
 (Get-Content -Path "c:\LabFiles\parameters.json") | ForEach-Object {$_ -Replace "GET-AZUSER-PASSWORD", "$AzurePassword"} | Set-Content -Path "c:\LabFiles\parameters.json"
 (Get-Content -Path "c:\LabFiles\parameters.json") | ForEach-Object {$_ -Replace "GET-DEPLOYMENT-ID", "$deploymentId"} | Set-Content -Path "c:\LabFiles\parameters.json"
 
+#adding MS Defender exclude path...
+Add-MpPreference -ExclusionPath "C:\labfiles"
+
 #download the git repo...
 Write-Host "Download Git repo." -ForegroundColor Green -Verbose
 git clone https://github.com/solliancenet/azure-defender-workshop-400.git synapse-ws-L400

@@ -28,7 +28,7 @@
 
 12. When prompted, type `yes`, then enter the lab password
 
-13. In the new SSH session, run the following command. This will push several images to the Azure container registry.
+13. In the new SSH session, run the following command. This will push several images to the Azure container registry.  Run each command one at a time to avoid skipping any commands:
 
     ```bash
     sudo apt-get update
@@ -55,7 +55,7 @@
 
     ```
 
-14. Push the image to your Azure Container Registry, be sure to replace the `acrName`, `username` and `password`:
+14. Push the image to your Azure Container Registry, be sure to replace the `acrName`, `username` and `password`.  Again, run each command one at a time to avoid skipping any commands:
 
     ```bash
     sudo docker login {acrName}.azurecr.io -u {username} -p {password}
@@ -88,7 +88,7 @@
 
     ![Ensure security is enabled.](./media/container_registry_security_on.png "Ensure security is enabled")
 
-18. Browse to **Microsoft Defender for Cloudr**
+18. Browse to **Microsoft Defender for Cloud**
 
 19. Under **Cloud Security**, select **Workload protections**
 
@@ -219,7 +219,7 @@
 
 > Note that Microsoft Defender will attempt to block you on this lab task.  You will need to open Defender and allow the files and actions as you proceed.  This may happen multiple times depending on the path you take.
 
-1. On the **paw-1** virtual machine, extract all the contents of the `c:/labfiles/workshop/artifacts/day-02/eicarcom2.zip` zip file until you get to the .exe file.
+1. On the **paw-1** virtual machine, extract all the contents of the `c:/labfiles/azure-defender-workshop-400/artifacts/day-02/eicarcom2.zip` zip file until you get to the .exe file.
 
     > NOTE:  You can also find this file on the eicar site : https://www.eicar.org/?page_id=3950
 
@@ -228,11 +228,11 @@
 4. Select the `sqlimport` container
 5. Select **Upload**
 6. Upload the `/artifacts/day-02/eicar.exe` file to the storage account
-7. After a few hours, you should see a new security alert in Microsoft Defender for Cloud
+7. After a few hours, you should see a new security alert in Microsoft Defender for Cloud, you can continue on to the remaining exercises and tasks and come back to check on this later.
 
     ![Security Alert.](./media/security_alert_malware_storage.png "Security Alert")
 
-8. Open https://outlook.office.com/mail/
+8. Open https://outlook.office.com/mail/ using your lab credentials.
 9. In your email, you will receive an approval email asking if you want to delete the malware file
 
     ![Security Alert.](./media/security_alert_malware_email.png "Security Alert")
