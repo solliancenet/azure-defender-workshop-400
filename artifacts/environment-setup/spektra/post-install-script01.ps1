@@ -238,9 +238,6 @@ $importRequest = New-AzSqlDatabaseImport -ResourceGroupName $resourceGroupName `
     -AdministratorLogin "wsuser" `
     -AdministratorLoginPassword $(ConvertTo-SecureString -String $password -AsPlainText -Force)
 
-#execute setup scripts
-Write-Host "Executing post scripts." -ForegroundColor Green -Verbose
-
 sleep 20
 
 Stop-Transcript

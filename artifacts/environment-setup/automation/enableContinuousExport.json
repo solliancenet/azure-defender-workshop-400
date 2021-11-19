@@ -1,0 +1,152 @@
+{
+  "etag": "",
+  "id": "/subscriptions/{SUBSCRIPTION_ID}/resourcegroups/{RESOURCE_GROUP_NAME}/providers/Microsoft.Security/automations/exportToEventHub",
+  "location": "{LOCATION}",
+  "name": "exportToEventHub",
+  "type": "Microsoft.Security/automations",
+  "tags": {},
+  "kind": "",
+  "properties": {
+    "description": "",
+    "isEnabled": true,
+    "metadata": {
+      "createdBy": "{PRINCIPAL_ID}",
+      "createdDateTimeUtc": "Fri, 19 Nov 2021 17:17:54 GMT",
+      "lastUpdatedBy": "{PRINCIPAL_ID}",
+      "lastUpdatedDateTimeUtc": "2021-11-19T17:17:54.000Z"
+    },
+    "actions": [
+      {
+        "actionType": "EventHub",
+        "connectionString": "{EVENT_HUB_CONNECTIONSTRING}",
+        "eventHubResourceId": "/subscriptions/{SUBSCRIPTION_ID}/resourcegroups/{RESOURCE_GROUP_NAME}/providers/microsoft.eventhub/namespaces/{RESOURCE_NAME}/eventhubs/{RESOURCE_NAME}"
+      }
+    ],
+    "scopes": [
+      {
+        "description": "scope for subscription {SUBSCRIPTION_ID}",
+        "scopePath": "/subscriptions/{SUBSCRIPTION_ID}"
+      }
+    ],
+    "sources": [
+      {
+        "eventSource": "Assessments",
+        "eventVersionType": "Api",
+        "ruleSets": [
+          {
+            "rules": [
+              {
+                "propertyJPath": "type",
+                "propertyType": "string",
+                "expectedValue": "Microsoft.Security/assessments",
+                "operator": "Contains"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "eventSource": "AssessmentsSnapshot",
+        "eventVersionType": "Api",
+        "ruleSets": [
+          {
+            "rules": [
+              {
+                "propertyJPath": "type",
+                "propertyType": "string",
+                "expectedValue": "Microsoft.Security/assessments",
+                "operator": "Contains"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "eventSource": "SubAssessments",
+        "eventVersionType": "Api",
+        "ruleSets": []
+      },
+      {
+        "eventSource": "SubAssessmentsSnapshot",
+        "eventVersionType": "Api",
+        "ruleSets": []
+      },
+      {
+        "eventSource": "Alerts",
+        "eventVersionType": "Standard",
+        "ruleSets": [
+          {
+            "rules": [
+              {
+                "propertyJPath": "Severity",
+                "propertyType": "string",
+                "expectedValue": "low",
+                "operator": "Equals"
+              }
+            ]
+          },
+          {
+            "rules": [
+              {
+                "propertyJPath": "Severity",
+                "propertyType": "string",
+                "expectedValue": "medium",
+                "operator": "Equals"
+              }
+            ]
+          },
+          {
+            "rules": [
+              {
+                "propertyJPath": "Severity",
+                "propertyType": "string",
+                "expectedValue": "high",
+                "operator": "Equals"
+              }
+            ]
+          },
+          {
+            "rules": [
+              {
+                "propertyJPath": "Severity",
+                "propertyType": "string",
+                "expectedValue": "informational",
+                "operator": "Equals"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "eventSource": "SecureScores",
+        "eventVersionType": "Api",
+        "ruleSets": []
+      },
+      {
+        "eventSource": "SecureScoresSnapshot",
+        "eventVersionType": "Api",
+        "ruleSets": []
+      },
+      {
+        "eventSource": "SecureScoreControls",
+        "eventVersionType": "Api",
+        "ruleSets": []
+      },
+      {
+        "eventSource": "SecureScoreControlsSnapshot",
+        "eventVersionType": "Api",
+        "ruleSets": []
+      },
+      {
+        "eventSource": "RegulatoryComplianceAssessment",
+        "eventVersionType": "Api",
+        "ruleSets": []
+      },
+      {
+        "eventSource": "RegulatoryComplianceAssessmentSnapshot",
+        "eventVersionType": "Api",
+        "ruleSets": []
+      }
+    ]
+  }
+}
