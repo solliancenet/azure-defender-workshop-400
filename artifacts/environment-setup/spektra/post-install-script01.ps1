@@ -172,10 +172,17 @@ $content = $content | ForEach-Object {$_ -Replace "GET-REGION", "$($rg.location)
 $content = $content | ForEach-Object {$_ -Replace "ARTIFACTS-LOCATION", "https://raw.githubusercontent.com/$repoUrl/$branch/artifacts/environment-setup/automation/"};
 $content | Set-Content -Path "$($parametersFile).json";
 
-Write-Host "Assiging Permissions"
+Write-Host "Assiging Permissions [Subscription]"
 
 New-AzRoleAssignment -SignInName $username -RoleDefinitionName "Security Reader" -Scope "/subscriptions/$subscriptionId" -ErrorAction SilentlyContinue;
 New-AzRoleAssignment -SignInName $username -RoleDefinitionName "Security Admin" -Scope "/subscriptions/$subscriptionId" -ErrorAction SilentlyContinue;
+
+Write-Host "Assiging Permissions [Management Group]"
+
+$mgmtGroup = Get-AzManagementGroup
+
+New-AzRoleAssignment -SignInName $username -RoleDefinitionName "Security Reader" -Scope $mgmtGroup.Id -ErrorAction SilentlyContinue;
+New-AzRoleAssignment -SignInName $username -RoleDefinitionName "Security Admin" -Scope $mgmtGroup.Id -ErrorAction SilentlyContinue;
 
 Write-Host "Executing main ARM deployment" -ForegroundColor Green -Verbose
 
